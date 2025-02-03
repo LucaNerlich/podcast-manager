@@ -9,7 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -70,6 +70,9 @@
       "relation": "manyToMany",
       "target": "api::feed.feed",
       "mappedBy": "allowed_users"
+    },
+    "token": {
+      "type": "uid"
     }
   }
 }

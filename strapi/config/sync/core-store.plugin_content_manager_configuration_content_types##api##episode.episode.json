@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::feed.feed",
+  "key": "plugin_content_manager_configuration_content_types::api::episode.episode",
   "value": {
     "settings": {
       "bulkable": true,
@@ -33,80 +33,23 @@
           "sortable": true
         }
       },
-      "description": {
+      "file": {
         "edit": {
-          "label": "description",
+          "label": "file",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "slug": {
-        "edit": {
-          "label": "slug",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "slug",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "public": {
-        "edit": {
-          "label": "public",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "public",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "allowed_users": {
-        "edit": {
-          "label": "allowed_users",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "username"
-        },
-        "list": {
-          "label": "allowed_users",
+          "label": "file",
           "searchable": false,
           "sortable": false
         }
       },
-      "cover": {
+      "feeds": {
         "edit": {
-          "label": "cover",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "cover",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "episodes": {
-        "edit": {
-          "label": "episodes",
+          "label": "feeds",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -114,23 +57,9 @@
           "mainField": "title"
         },
         "list": {
-          "label": "episodes",
+          "label": "feeds",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "data": {
-        "edit": {
-          "label": "data",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "data",
-          "searchable": true,
-          "sortable": true
         }
       },
       "createdAt": {
@@ -196,8 +125,8 @@
       "list": [
         "id",
         "title",
-        "description",
-        "slug"
+        "file",
+        "createdAt"
       ],
       "edit": [
         [
@@ -206,43 +135,19 @@
             "size": 6
           },
           {
-            "name": "description",
+            "name": "file",
             "size": 6
           }
         ],
         [
           {
-            "name": "slug",
-            "size": 6
-          },
-          {
-            "name": "public",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "allowed_users",
-            "size": 6
-          },
-          {
-            "name": "cover",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "episodes",
-            "size": 6
-          },
-          {
-            "name": "data",
+            "name": "feeds",
             "size": 6
           }
         ]
       ]
     },
-    "uid": "api::feed.feed"
+    "uid": "api::episode.episode"
   },
   "type": "object",
   "environment": null,

@@ -6,7 +6,70 @@
   "locale": null,
   "permissions": [
     {
-      "documentId": "snyca2xa97qccolzc1btmwya",
+      "documentId": "ubsup8re1yrrrxsmrov6xiei",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {
+        "fields": [
+          "title",
+          "file",
+          "feeds"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "xqlbhb7wxuk8o7dhlj4lcqnr",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "yk0gk4qow2ki3htapd9jy5cy",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "hbqzrxtiop1n3ex7pd7rotlt",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {
+        "fields": [
+          "title",
+          "file",
+          "feeds"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "dqtocjnpj9ps4hfy1elerxne",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {
+        "fields": [
+          "title",
+          "file",
+          "feeds"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "ikubv1m85puw5m2s0e44764o",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -16,7 +79,10 @@
           "description",
           "slug",
           "public",
-          "allowed_users"
+          "allowed_users",
+          "cover",
+          "episodes",
+          "data"
         ]
       },
       "conditions": [],
@@ -41,7 +107,7 @@
       "locale": null
     },
     {
-      "documentId": "iuoifv4uieth56k48yr9ethp",
+      "documentId": "fa3pmhknk8x1j108w3nhycjq",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -51,14 +117,17 @@
           "description",
           "slug",
           "public",
-          "allowed_users"
+          "allowed_users",
+          "cover",
+          "episodes",
+          "data"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "xs4kyzwe46xqr5s00xaba2la",
+      "documentId": "miy4j2n6g0thx6pd21xtn9wa",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -68,7 +137,10 @@
           "description",
           "slug",
           "public",
-          "allowed_users"
+          "allowed_users",
+          "cover",
+          "episodes",
+          "data"
         ]
       },
       "conditions": [],
@@ -354,7 +426,7 @@
       "locale": null
     },
     {
-      "documentId": "lmre7lbo89hkxiarz7zkcvyb",
+      "documentId": "ny560autmj1t80p6vvogyvj2",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "plugin::users-permissions.user",
@@ -369,7 +441,8 @@
           "confirmed",
           "blocked",
           "role",
-          "feeds"
+          "feeds",
+          "token"
         ]
       },
       "conditions": [],
@@ -394,7 +467,7 @@
       "locale": null
     },
     {
-      "documentId": "qa0626bcr2hdw8kmf6gsue3q",
+      "documentId": "ruqlbotsmqn91nxq2c8uesw9",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "plugin::users-permissions.user",
@@ -409,14 +482,15 @@
           "confirmed",
           "blocked",
           "role",
-          "feeds"
+          "feeds",
+          "token"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "sn5eyrjufbq1u0xeilju75o5",
+      "documentId": "pwglrydeav3r0ihv514padyl",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "plugin::users-permissions.user",
@@ -431,7 +505,8 @@
           "confirmed",
           "blocked",
           "role",
-          "feeds"
+          "feeds",
+          "token"
         ]
       },
       "conditions": [],

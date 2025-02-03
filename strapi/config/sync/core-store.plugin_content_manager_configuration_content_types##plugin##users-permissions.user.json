@@ -161,6 +161,20 @@
           "sortable": false
         }
       },
+      "token": {
+        "edit": {
+          "label": "token",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "token",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -261,6 +275,10 @@
         [
           {
             "name": "feeds",
+            "size": 6
+          },
+          {
+            "name": "token",
             "size": 6
           }
         ]

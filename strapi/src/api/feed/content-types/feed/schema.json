@@ -4,7 +4,8 @@
   "info": {
     "singularName": "feed",
     "pluralName": "feeds",
-    "displayName": "Feed"
+    "displayName": "Feed",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -33,6 +34,24 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "feeds"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "episodes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::episode.episode",
+      "inversedBy": "feeds"
+    },
+    "data": {
+      "type": "text"
     }
   }
 }
