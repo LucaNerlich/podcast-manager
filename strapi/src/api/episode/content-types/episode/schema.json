@@ -4,7 +4,8 @@
   "info": {
     "singularName": "episode",
     "pluralName": "episodes",
-    "displayName": "Episode"
+      "displayName": "Episode",
+      "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,20 +16,32 @@
       "type": "string",
       "required": true
     },
-    "file": {
+      "audio": {
+          "type": "media",
+          "multiple": false,
+          "required": true,
       "allowedTypes": [
         "files",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
     "feeds": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::feed.feed",
       "mappedBy": "episodes"
+    },
+      "cover": {
+          "allowedTypes": [
+              "images",
+              "files"
+          ],
+          "type": "media",
+          "multiple": false,
+          "required": true
+      },
+      "guid": {
+          "type": "uid"
     }
   }
 }

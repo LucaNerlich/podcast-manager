@@ -33,16 +33,16 @@
           "sortable": true
         }
       },
-      "file": {
+        "audio": {
         "edit": {
-          "label": "file",
+            "label": "audio",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "file",
+            "label": "audio",
           "searchable": false,
           "sortable": false
         }
@@ -62,6 +62,34 @@
           "sortable": false
         }
       },
+        "cover": {
+            "edit": {
+                "label": "cover",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "cover",
+                "searchable": false,
+                "sortable": false
+            }
+        },
+        "guid": {
+            "edit": {
+                "label": "guid",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": false
+            },
+            "list": {
+                "label": "guid",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -122,20 +150,20 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "file",
-        "createdAt"
-      ],
       "edit": [
         [
           {
             "name": "title",
             "size": 6
-          },
+          }
+        ],
+          [
           {
-            "name": "file",
+              "name": "audio",
+              "size": 6
+          },
+              {
+                  "name": "cover",
             "size": 6
           }
         ],
@@ -143,8 +171,18 @@
           {
             "name": "feeds",
             "size": 6
+          },
+            {
+                "name": "guid",
+                "size": 6
           }
         ]
+      ],
+        "list": [
+            "id",
+            "title",
+            "createdAt",
+            "audio"
       ]
     },
     "uid": "api::episode.episode"

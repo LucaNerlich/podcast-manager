@@ -6,15 +6,17 @@
   "locale": null,
   "permissions": [
     {
-      "documentId": "ubsup8re1yrrrxsmrov6xiei",
+        "documentId": "hblgzyc4j63kv7igqb11ttis",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::episode.episode",
       "properties": {
         "fields": [
           "title",
-          "file",
-          "feeds"
+            "audio",
+            "feeds",
+            "cover",
+            "guid"
         ]
       },
       "conditions": [],
@@ -39,30 +41,34 @@
       "locale": null
     },
     {
-      "documentId": "hbqzrxtiop1n3ex7pd7rotlt",
+        "documentId": "oss1o1ezd5l56y9buii0x479",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::episode.episode",
       "properties": {
         "fields": [
           "title",
-          "file",
-          "feeds"
+            "audio",
+            "feeds",
+            "cover",
+            "guid"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "dqtocjnpj9ps4hfy1elerxne",
+        "documentId": "by2862gxffmijcvejmhhr1im",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::episode.episode",
       "properties": {
         "fields": [
           "title",
-          "file",
-          "feeds"
+            "audio",
+            "feeds",
+            "cover",
+            "guid"
         ]
       },
       "conditions": [],
