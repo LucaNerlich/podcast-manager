@@ -1,4 +1,4 @@
-// import type { Core } from '@strapi/strapi';
+import type {Core} from '@strapi/strapi';
 
 export default {
     /**
@@ -17,6 +17,13 @@ export default {
      * This gives you an opportunity to set up your data model,
      * run jobs, or perform some special logic.
      */
-    bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {
+    bootstrap({strapi}: { strapi: Core.Strapi }) {
+        // https://forum.strapi.io/t/strapi-create-new-user-users-permissions-plugin-lifecycles/13386/3
+        strapi.db.lifecycles.subscribe({
+            models: ['plugin::users-permissions.user'],
+            async beforeCreate(event) {
+                event.params.data.token = crypto.randomUUID();
+            },
+        });
     },
 };
