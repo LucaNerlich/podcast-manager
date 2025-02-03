@@ -21,8 +21,21 @@ export default {
         // https://forum.strapi.io/t/strapi-create-new-user-users-permissions-plugin-lifecycles/13386/3
         strapi.db.lifecycles.subscribe({
             models: ['plugin::users-permissions.user'],
+            // Generate and add token to new users
             async beforeCreate(event) {
                 event.params.data.token = crypto.randomUUID();
+            },
+
+            async beforeUpdate(event) {
+                // Prevent users from changing their token
+                if (event.params.data && "token" in event.params.data) {
+                    delete event.params.data.token;
+                }
+
+                // Prevent users from changing their blocked status
+                if (event.params.data && "blocked" in event.params.data) {
+                    delete event.params.data.blocked;
+                }
             },
         });
     },
