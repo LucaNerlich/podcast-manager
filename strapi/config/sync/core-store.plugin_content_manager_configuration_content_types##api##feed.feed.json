@@ -122,10 +122,10 @@
       "data": {
         "edit": {
           "label": "data",
-          "description": "",
+            "description": "Generated XML file",
           "placeholder": "",
           "visible": true,
-          "editable": true
+            "editable": false
         },
         "list": {
           "label": "data",
@@ -193,12 +193,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "description",
-        "slug"
-      ],
       "edit": [
         [
           {
@@ -240,6 +234,12 @@
             "size": 6
           }
         ]
+      ],
+        "list": [
+            "id",
+            "title",
+            "description",
+            "slug"
       ]
     },
     "uid": "api::feed.feed"
