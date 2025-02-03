@@ -5,35 +5,33 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
     // finds by documentId
     async findOne(ctx) {
         await this.validateQuery(ctx)
-        const url = new URL('http://localhost:1337' + ctx.request.url);
-        const urlSearchParams = new URLSearchParams(url.search);
+        const baseUrl = 'http://localhost:1337';
+        const requestUrl = new URL(baseUrl + ctx.request.url);
+        const searchParams = new URLSearchParams(requestUrl.search);
+        const feedId = requestUrl.pathname.split('/api/feeds/')[1];
 
-        const response = await strapi.documents('api::feed.feed').findOne({
+
+        const feed = await strapi.documents('api::feed.feed').findOne({
             // get document id from request url
-            documentId: url.pathname.split('/api/feeds/')[1],
+            documentId: feedId,
             populate: ['episodes', 'allowed_users'],
         });
 
-        if (response.public) {
-            delete response.allowed_users;
-            return response;
+        if (feed.public) {
+            delete feed.allowed_users;
+            return feed;
         }
 
-        if (!urlSearchParams.has('token')) {
+        if (!searchParams.has('token')) {
             return ctx.forbidden("You need to pass your token as a query parameter 'token' to access this feed.");
         }
 
-        const isAllowed = response.allowed_users?.some(
-            (user) => {
-                return user.token === urlSearchParams.get('token');
-            }
-        );
-
-        if (!isAllowed) {
+        const token = searchParams.get('token');
+        if (!feed.allowed_users.some(user => user.token === token)) {
             return ctx.forbidden("You do not have access to this feed.");
         }
 
-        delete response.allowed_users;
-        return response;
+        delete feed.allowed_users;
+        return feed;
     }
 }));
