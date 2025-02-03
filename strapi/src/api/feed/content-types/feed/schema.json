@@ -52,6 +52,21 @@
     },
     "data": {
       "type": "text"
+    },
+      "email": {
+          "type": "email",
+          "default": "changeme@unknown.com",
+          "required": true
+      },
+      "copyright": {
+          "type": "string",
+          "default": "All rights reserved",
+          "required": true
+      },
+      "owner": {
+          "type": "string",
+          "required": true,
+          "default": "Some Owner"
     }
   }
 }

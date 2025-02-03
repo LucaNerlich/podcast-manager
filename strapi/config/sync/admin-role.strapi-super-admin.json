@@ -69,7 +69,7 @@
       "locale": null
     },
     {
-      "documentId": "ikubv1m85puw5m2s0e44764o",
+        "documentId": "qvbw645fldy3jia8pmz3wgbg",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -82,7 +82,10 @@
           "allowed_users",
           "cover",
           "episodes",
-          "data"
+            "data",
+            "email",
+            "copyright",
+            "owner"
         ]
       },
       "conditions": [],
@@ -107,7 +110,7 @@
       "locale": null
     },
     {
-      "documentId": "fa3pmhknk8x1j108w3nhycjq",
+        "documentId": "iahj92z3h88mdpqtpatr231l",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -120,14 +123,17 @@
           "allowed_users",
           "cover",
           "episodes",
-          "data"
+            "data",
+            "email",
+            "copyright",
+            "owner"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "miy4j2n6g0thx6pd21xtn9wa",
+        "documentId": "elh1aqx2oygombvdf95ikuh1",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -140,7 +146,10 @@
           "allowed_users",
           "cover",
           "episodes",
-          "data"
+            "data",
+            "email",
+            "copyright",
+            "owner"
         ]
       },
       "conditions": [],

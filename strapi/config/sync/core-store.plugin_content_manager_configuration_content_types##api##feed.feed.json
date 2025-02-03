@@ -133,6 +133,48 @@
           "sortable": true
         }
       },
+        "email": {
+            "edit": {
+                "label": "email",
+                "description": "Owner E-Mail",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "email",
+                "searchable": true,
+                "sortable": true
+            }
+        },
+        "copyright": {
+            "edit": {
+                "label": "copyright",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "copyright",
+                "searchable": true,
+                "sortable": true
+            }
+        },
+        "owner": {
+            "edit": {
+                "label": "owner",
+                "description": "Owner Name",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "owner",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -206,17 +248,27 @@
         ],
         [
           {
-            "name": "slug",
-            "size": 6
+              "name": "owner",
+              "size": 6
           },
+            {
+                "name": "email",
+            "size": 6
+            }
+        ],
+          [
           {
             "name": "public",
             "size": 4
+          },
+              {
+                  "name": "copyright",
+                  "size": 8
           }
         ],
         [
           {
-            "name": "allowed_users",
+              "name": "slug",
             "size": 6
           },
           {
@@ -225,13 +277,19 @@
           }
         ],
         [
+            {
+                "name": "allowed_users",
+                "size": 6
+            },
           {
             "name": "episodes",
             "size": 6
-          },
+          }
+        ],
+          [
           {
             "name": "data",
-            "size": 6
+              "size": 12
           }
         ]
       ],

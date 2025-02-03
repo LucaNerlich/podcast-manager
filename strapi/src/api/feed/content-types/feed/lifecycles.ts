@@ -2,20 +2,22 @@ import prettify from "prettify-xml";
 
 export default {
     beforeCreate(event) {
-        console.log("beforeCreate");
-        console.log("event.params.data", event.params.data);
         const emptyRss = `
         <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
             <channel>
                 <title>${event.params.data.title}</title>
                 <description>${event.params.data.description}</description>
                 <language>de</language>
-                <copyright>All rights reserved</copyright>
+                <copyright>${event.params.data.copyright}</copyright>
                 <itunes:category text="Leisure"/>
                 <itunes:owner>
-                    <itunes:name>TODO</itunes:name>
-                    <itunes:email>TODO</itunes:email>
+                    <itunes:name>${event.params.data.owner}</itunes:name>
+                    <itunes:email>${event.params.data.email}</itunes:email>
                 </itunes:owner>
+                <itunes:author>${event.params.data.owner}</itunes:author>
+                <itunes:explicit>false</itunes:explicit>
+                <itunes:type>episodic</itunes:type>
+                <itunes:image href="${event.params.data.cover?.url}"/>
             </channel>
         </rss>
         `;
