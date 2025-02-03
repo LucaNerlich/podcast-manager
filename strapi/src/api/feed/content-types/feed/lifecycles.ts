@@ -1,3 +1,5 @@
+import prettify from "prettify-xml";
+
 export default {
     beforeCreate(event) {
         console.log("beforeCreate");
@@ -16,8 +18,12 @@ export default {
                 </itunes:owner>
             </channel>
         </rss>
-        `
-        event.params.data.data = emptyRss;
+        `;
+
+        event.params.data.data = prettify(emptyRss, {
+            indent: 2,
+            newline: "\n",
+        });
     },
 
     afterCreate(event) {
