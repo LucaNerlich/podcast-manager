@@ -12,26 +12,58 @@ module.exports = (plugin) => {
         return user;
     };
 
-    plugin.controllers.user.update = async (ctx) => {
+    function isSelf(ctx): boolean {
         const {id} = ctx.params;
         const {id: currentUserId} = ctx.state.user;
+        return id.toString() === currentUserId.toString()
+    }
 
-        // Check if the user is trying to update their own profile
-        if (id.toString() !== currentUserId.toString()) {
+    // Only allow changes to yourself
+    plugin.controllers.user.update = async (ctx) => {
+        if (!isSelf(ctx)) {
             return ctx.unauthorized("You can only update your own profile.");
         }
 
-        // If it passes the check, proceed with the update
+        const {id} = ctx.params;
         const response = await strapi.entityService.update('plugin::users-permissions.user', id, {
             data: {
                 ...ctx.request.body,
-                // reuse token from user, request body token has been deleted in beforeUpdate lifecycle hook
+                // prevent overwriting of blocked and token
+                blocked: ctx.state.user.blocked,
                 token: ctx.state.user.token,
             },
         });
 
         return sanitizeOutput(response);
     };
+
+    // Add a custom controller to set a new token
+    plugin.controllers.user.newToken = async (ctx) => {
+        if (!isSelf(ctx)) {
+            return ctx.unauthorized("You can only update your own profile.");
+        }
+
+        const {id} = ctx.params;
+        const response = await strapi.entityService.update('plugin::users-permissions.user', id, {
+            data: {
+                ...ctx.state.user,
+                // set a new token
+                token: crypto.randomUUID(),
+            },
+        });
+
+        return sanitizeOutput(response);
+    };
+
+    // Add the custom newToken route
+    plugin.routes['content-api'].routes.unshift({
+        method: 'PUT',
+        path: '/users/:id/newToken',
+        handler: 'user.newToken',
+        config: {
+            prefix: ''
+        }
+    });
 
     return plugin;
 };

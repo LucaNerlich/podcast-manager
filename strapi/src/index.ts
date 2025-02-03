@@ -25,18 +25,6 @@ export default {
             async beforeCreate(event) {
                 event.params.data.token = crypto.randomUUID();
             },
-
-            async beforeUpdate(event) {
-                // Prevent users from changing their token
-                if (event.params.data && "token" in event.params.data) {
-                    delete event.params.data.token;
-                }
-
-                // Prevent users from changing their blocked status
-                if (event.params.data && "blocked" in event.params.data) {
-                    delete event.params.data.blocked;
-                }
-            },
         });
     },
 };
