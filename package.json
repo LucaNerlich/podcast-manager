@@ -5,25 +5,23 @@
     "description": "A Strapi application",
     "scripts": {
         "build": "strapi build",
-        "deploy": "strapi deploy",
         "dev": "strapi develop",
-        "seed:example": "node ./scripts/seed.js",
         "start": "strapi start",
         "strapi": "strapi"
     },
     "dependencies": {
-        "@strapi/plugin-cloud": "5.9.0",
-        "@strapi/plugin-users-permissions": "5.9.0",
-        "@strapi/strapi": "5.9.0",
+        "@strapi/plugin-cloud": "^5.9.0",
+        "@strapi/plugin-users-permissions": "^5.9.0",
+        "@strapi/strapi": "^5.9.0",
         "fs-extra": "^10.0.0",
         "mime-types": "^2.1.27",
-        "pg": "8.8.0",
+        "pg": "~8.8.0",
         "prettify-xml": "^1.2.0",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-router-dom": "^6.0.0",
         "strapi-plugin-config-sync": "^3.1.1",
-        "styled-components": "^6.0.0"
+        "styled-components": "~6.0.0"
     },
     "devDependencies": {
         "@types/node": "^20",
@@ -34,8 +32,5 @@
     "engines": {
         "node": ">=18.0.0 <=22.x.x",
         "npm": ">=6.0.0"
-    },
-    "strapi": {
-        "uuid": "1947248d-0563-4d93-95f0-82566919cc17"
     }
 }
