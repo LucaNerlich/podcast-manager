@@ -29,9 +29,17 @@ export default {
     },
 
     afterCreate(event) {
-        console.log("afterCreate");
-
         const {result, params} = event;
+
+        console.log("afterCreate - feed result", result);
+
+        // do something to the result;
+    },
+
+    afterUpdate(event) {
+        const {result, params} = event;
+
+        console.log("afterUpdate - feed result", result);
 
         // do something to the result;
     },
