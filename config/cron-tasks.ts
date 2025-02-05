@@ -36,7 +36,7 @@ export default {
             // https://github.com/strapi/strapi/issues/12665
             // https://github.com/strapi/strapi/issues/12719
             const feeds = await strapi.documents('api::feed.feed').findMany({
-                populate: ['episodes'],
+                populate: ['episodes', 'cover'],
                 status: 'published',
             });
 
@@ -48,10 +48,12 @@ export default {
                 }
 
                 // Skip unchanged feeds
-                if (new Date(feed.generatedAt).getTime() + 2000 > new Date(feed.updatedAt).getTime()) {
-                    console.info("Skipped unmodified feed - " + feed.documentId)
-                    continue
-                }
+                // this does not work, since publish and unpublishing episodes does not change the feed update time
+                // maybe we do have to, once again, manually update the updateCount in a feed from an episode lifecyle hook to retrigger the updatedAt timestamp
+                // if (new Date(feed.generatedAt).getTime() + 2000 > new Date(feed.updatedAt).getTime()) {
+                //     console.info("Skipped unmodified feed - " + feed.documentId)
+                //     continue
+                // }
 
                 const generatedFeed = prettify(generateFeed(feed), {
                     indent: 2,
