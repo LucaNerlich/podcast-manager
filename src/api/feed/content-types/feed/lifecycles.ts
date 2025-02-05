@@ -1,7 +1,7 @@
 import prettify from "prettify-xml";
 
 export default {
-    beforeCreate(event) {
+    async beforeCreate(event) {
         const emptyRss = `
         <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
             <channel>
@@ -27,22 +27,25 @@ export default {
             newline: "\n",
         });
 
-        event.params.data.guid = crypto.randomUUID();
+        event.params.data.guid = event.params.data.guid ?? crypto.randomUUID();
     },
 
-    afterCreate(event) {
-        const {result, params} = event;
-
-        console.log("afterCreate - feed result", result);
+    async beforeUpdate(event) {
+        //console.log("beforeUpdate - feed", event.params.data);
+        //console.log("connect", event.params.data.episodes.connect);
+        //console.log("disconnect", event.params.data.episodes.disconnect);
 
         // do something to the result;
     },
-
-    afterUpdate(event) {
+    async afterUpdate(event) {
         const {result, params} = event;
+        console.log("result - afterUpdate", result);
 
-        console.log("afterUpdate - feed result", result);
+        const feed = await strapi.documents('api::feed.feed').findOne({
+            documentId: result.documentId,
+            populate: ['episodes'],
+        });
 
-        // do something to the result;
-    },
+        //console.log("feed", feed);
+    }
 };

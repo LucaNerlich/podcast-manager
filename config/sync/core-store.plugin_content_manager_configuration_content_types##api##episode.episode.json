@@ -121,8 +121,8 @@
         "duration": {
             "edit": {
                 "label": "duration",
-                "description": "",
-                "placeholder": "",
+                "description": "MP3 duration in seconds",
+                "placeholder": "56478",
                 "visible": true,
                 "editable": true
             },
@@ -206,21 +206,21 @@
           [
               {
                   "name": "audio",
-                  "size": 8
+                  "size": 6
           },
-              {
-                  "name": "duration",
-                  "size": 4
-              }
-          ],
-          [
               {
                   "name": "cover",
             "size": 6
-              },
+              }
+          ],
+          [
           {
             "name": "feeds",
             "size": 6
+          },
+              {
+                  "name": "duration",
+                  "size": 6
           }
           ],
           [

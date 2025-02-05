@@ -189,6 +189,20 @@
                 "sortable": true
             }
         },
+        "updatedCount": {
+            "edit": {
+                "label": "updatedCount",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": false
+            },
+            "list": {
+                "label": "updatedCount",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -310,6 +324,12 @@
           {
             "name": "data",
               "size": 12
+          }
+          ],
+          [
+              {
+                  "name": "updatedCount",
+                  "size": 12
           }
         ]
       ],
