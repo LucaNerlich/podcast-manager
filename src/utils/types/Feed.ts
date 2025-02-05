@@ -10,6 +10,7 @@ export interface Feed {
     public: boolean;
     createdAt: string;
     updatedAt: string;
+    generatedAt: string;
     publishedAt?: string;
     data: string; // cache / the actual rss feed xml as a string
     email: string;

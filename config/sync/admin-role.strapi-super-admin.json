@@ -6,20 +6,20 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "zw2aqwo69rfl4v84z3vxgcgm",
+      "documentId": "zw2aqwo69rfl4v84z3vxgcgm",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::episode.episode",
       "properties": {
         "fields": [
           "title",
-            "audio",
-            "feeds",
-            "cover",
-            "guid",
-            "data",
-            "description",
-            "duration"
+          "audio",
+          "feeds",
+          "cover",
+          "guid",
+          "data",
+          "description",
+          "duration"
         ]
       },
       "conditions": [],
@@ -44,47 +44,47 @@
       "locale": null
     },
     {
-        "documentId": "hpmd3p0w4uoa4sccyozyu4k3",
+      "documentId": "hpmd3p0w4uoa4sccyozyu4k3",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::episode.episode",
       "properties": {
         "fields": [
           "title",
-            "audio",
-            "feeds",
-            "cover",
-            "guid",
-            "data",
-            "description",
-            "duration"
+          "audio",
+          "feeds",
+          "cover",
+          "guid",
+          "data",
+          "description",
+          "duration"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-        "documentId": "dzjzawprbu2fqc6fa7nwu42c",
+      "documentId": "dzjzawprbu2fqc6fa7nwu42c",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::episode.episode",
       "properties": {
         "fields": [
           "title",
-            "audio",
-            "feeds",
-            "cover",
-            "guid",
-            "data",
-            "description",
-            "duration"
+          "audio",
+          "feeds",
+          "cover",
+          "guid",
+          "data",
+          "description",
+          "duration"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-        "documentId": "fw089d0mn2xb7x5zw12nkicl",
+      "documentId": "eiijezk6yz4fmzjyfmqr6bpj",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -97,13 +97,13 @@
           "allowed_users",
           "cover",
           "episodes",
-            "data",
-            "email",
-            "copyright",
-            "owner",
-            "guid",
-            "updatedCount",
-            "lastGeneratedAt"
+          "data",
+          "email",
+          "copyright",
+          "owner",
+          "guid",
+          "updatedCount",
+          "generatedAt"
         ]
       },
       "conditions": [],
@@ -128,7 +128,7 @@
       "locale": null
     },
     {
-        "documentId": "yoxb4k4q9ge8e1ujaq3hnuj6",
+      "documentId": "hmydpaym2m4bvhgk1yrulnd9",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -141,20 +141,20 @@
           "allowed_users",
           "cover",
           "episodes",
-            "data",
-            "email",
-            "copyright",
-            "owner",
-            "guid",
-            "updatedCount",
-            "lastGeneratedAt"
+          "data",
+          "email",
+          "copyright",
+          "owner",
+          "guid",
+          "updatedCount",
+          "generatedAt"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-        "documentId": "f5723ffuujjvl2d30ammfuar",
+      "documentId": "hs8k1pf0n1d1tqxvncg93rb9",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -167,13 +167,13 @@
           "allowed_users",
           "cover",
           "episodes",
-            "data",
-            "email",
-            "copyright",
-            "owner",
-            "guid",
-            "updatedCount",
-            "lastGeneratedAt"
+          "data",
+          "email",
+          "copyright",
+          "owner",
+          "guid",
+          "updatedCount",
+          "generatedAt"
         ]
       },
       "conditions": [],

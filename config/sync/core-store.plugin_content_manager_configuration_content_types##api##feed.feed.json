@@ -203,16 +203,16 @@
                 "sortable": true
             }
         },
-        "lastGeneratedAt": {
+        "generatedAt": {
             "edit": {
-                "label": "lastGeneratedAt",
+                "label": "generatedAt",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
                 "editable": false
             },
             "list": {
-                "label": "lastGeneratedAt",
+                "label": "generatedAt",
                 "searchable": true,
                 "sortable": true
             }
@@ -342,11 +342,11 @@
           ],
           [
               {
-                  "name": "lastGeneratedAt",
+                  "name": "updatedCount",
                   "size": 6
               },
               {
-                  "name": "updatedCount",
+                  "name": "generatedAt",
                   "size": 6
           }
         ]
