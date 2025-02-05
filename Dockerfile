@@ -39,7 +39,7 @@ ENV AWS_BUCKET_TEST=$AWS_BUCKET_TEST
 ENV HOST=$HOSTNAME
 
 WORKDIR /opt/
-COPY projects/strapi/cffc-v4/package.json projects/strapi/cffc-v4/package-lock.json ./
+COPY ./package.json ./package-lock.json ./
 RUN npm install -g node-gyp
 RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
 ENV PATH=/opt/node_modules/.bin:$PATH
