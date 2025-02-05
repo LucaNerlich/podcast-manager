@@ -19,7 +19,7 @@ function generateFeed(feed) {
                 <itunes:explicit>false</itunes:explicit>
                 <itunes:type>episodic</itunes:type>
                 <itunes:image href="${feed.cover?.url}"/>
-                ${episodes.filter((episode) => !episode.publishedAt).map((episode) => episode.data).join('')}
+                ${episodes.map((episode) => episode.data).join('')}
             </channel>
         </rss>
         `;
@@ -31,6 +31,7 @@ export default {
             // https://docs.strapi.io/dev-docs/api/document-service#findmany
             const feeds = await strapi.documents('api::feed.feed').findMany({
                 populate: ['episodes'],
+                status: 'published',
             });
 
             for (const feed of feeds) {
