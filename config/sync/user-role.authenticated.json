@@ -16,11 +16,6 @@
             "locale": null
         },
         {
-            "documentId": "eioxjf6431izi6rwlbqlsurp",
-            "action": "api::feed.feed.find",
-            "locale": null
-        },
-        {
             "documentId": "t5auz4l9geyfrkm9pwlssrt3",
             "action": "api::feed.feed.findOne",
             "locale": null

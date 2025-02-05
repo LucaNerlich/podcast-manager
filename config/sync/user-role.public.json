@@ -6,25 +6,10 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "y2mesi8h30tnj7178nh7fu6w",
-        "action": "api::episode.episode.find",
+        "documentId": "j5j5tua62hkizatgvplmfs50",
+        "action": "api::feed.feed.findOne",
         "locale": null
     },
-      {
-          "documentId": "va4b9b8nk7qa5vw43c85ymgx",
-          "action": "api::episode.episode.findOne",
-          "locale": null
-      },
-      {
-          "documentId": "lr7x3ivo1b6v9jrbncx7pu5v",
-          "action": "api::feed.feed.find",
-          "locale": null
-      },
-      {
-          "documentId": "j5j5tua62hkizatgvplmfs50",
-          "action": "api::feed.feed.findOne",
-          "locale": null
-      },
       {
       "documentId": "jwp1taamg7gmyxvcgociqv1s",
       "action": "plugin::users-permissions.auth.callback",
