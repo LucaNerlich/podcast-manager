@@ -1,10 +1,13 @@
 import prettify from "prettify-xml";
 
 function generateFeed(feed) {
-    console.log("feed", feed);
     const episodes = feed.episodes;
+    console.log("feed", feed);
     return `
-        <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+        <rss version="2.0" 
+        xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/">
             <channel>
                 <title>${feed.title}</title>
                 <description>${feed.description}</description>
@@ -29,35 +32,49 @@ export default {
     generateFeeds: {
         task: async ({strapi}) => {
             // https://docs.strapi.io/dev-docs/api/document-service#findmany
+            // apparently, status propagates 'down'
+            // https://github.com/strapi/strapi/issues/12665
+            // https://github.com/strapi/strapi/issues/12719
             const feeds = await strapi.documents('api::feed.feed').findMany({
                 populate: ['episodes'],
                 status: 'published',
             });
 
             for (const feed of feeds) {
-                if (!feed.episodes || feed.episodes.length === 0) continue;
+                // Skip empty feeds
+                if (!feed.episodes || feed.episodes.length === 0) {
+                    console.info("Skipped empty feed - " + feed.documentId)
+                    continue;
+                }
 
-                // todo check generatedAt and updatedAt
+                // Skip unchanged feeds
+                if (new Date(feed.generatedAt).getTime() + 2000 > new Date(feed.updatedAt).getTime()) {
+                    console.info("Skipped unmodified feed - " + feed.documentId)
+                    continue
+                }
 
-                const generatedFed = prettify(generateFeed(feed), {
+                const generatedFeed = prettify(generateFeed(feed), {
                     indent: 2,
                     newline: "\n",
                 })
 
-                console.log("data", generatedFed);
                 await strapi.documents('api::feed.feed').update({
                     documentId: feed.documentId,
                     data: {
                         generatedAt: new Date(),
-                        data: generatedFed
+                        data: generatedFeed
                     }
                 })
+                console.info("Regenerated feed - " + feed.documentId)
             }
+        },
+        options: {
+            rule: "* * * * *", // every minute
         },
         // options: {
         //     rule: "*/5 * * * *", // every 5 minutes
         // },
-        // only run once after 10 seconds
-        options: new Date(Date.now() + 10000),
+        // only run once after 10 seconds * * * * *
+        //options: new Date(Date.now() + 10000),
     },
 };
