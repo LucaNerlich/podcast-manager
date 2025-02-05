@@ -7,7 +7,17 @@ export default [
             contentSecurityPolicy: {
                 directives: {
                     'script-src': ['\'self\'', '\'unsafe-inline\''],
-                    'img-src': ['blob:', '\'self\'', 'data:', 'market-assets.strapi.io', 'strapi.io', 'strapi-cffc-test.s3.eu-central-1.amazonaws.com', 'strapi-cffc.s3.eu-central-1.amazonaws.com', 'dl.airtable.com'],
+                    'img-src': [
+                        'blob:',
+                        '\'self\'',
+                        'data:',
+                        'market-assets.strapi.io',
+                        'strapi.io',
+                        'strapi-cffc-test.s3.eu-central-1.amazonaws.com',
+                        'strapi-cffc.s3.eu-central-1.amazonaws.com',
+                        'podcast-manager.s3.eu-central-1.amazonaws.com',
+                        'dl.airtable.com'
+                    ],
                 },
             },
         },
