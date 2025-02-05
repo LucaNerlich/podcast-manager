@@ -19,11 +19,6 @@
     "description": {
       "type": "text"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title",
-      "required": true
-    },
     "public": {
       "type": "boolean",
       "default": true,
@@ -78,6 +73,11 @@
     },
     "generatedAt": {
       "type": "datetime"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

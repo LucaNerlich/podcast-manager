@@ -84,7 +84,7 @@
       "locale": null
     },
     {
-      "documentId": "eiijezk6yz4fmzjyfmqr6bpj",
+      "documentId": "tq9km5bq8f9d9oguq4rfwagd",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -92,7 +92,6 @@
         "fields": [
           "title",
           "description",
-          "slug",
           "public",
           "allowed_users",
           "cover",
@@ -103,7 +102,8 @@
           "owner",
           "guid",
           "updatedCount",
-          "generatedAt"
+          "generatedAt",
+          "slug"
         ]
       },
       "conditions": [],
@@ -128,7 +128,7 @@
       "locale": null
     },
     {
-      "documentId": "hmydpaym2m4bvhgk1yrulnd9",
+      "documentId": "cefb6yk4vu00hpae38v082qb",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -136,7 +136,6 @@
         "fields": [
           "title",
           "description",
-          "slug",
           "public",
           "allowed_users",
           "cover",
@@ -147,14 +146,15 @@
           "owner",
           "guid",
           "updatedCount",
-          "generatedAt"
+          "generatedAt",
+          "slug"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "hs8k1pf0n1d1tqxvncg93rb9",
+      "documentId": "t41qtr9k4ewywtpd5l238s8o",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -162,7 +162,6 @@
         "fields": [
           "title",
           "description",
-          "slug",
           "public",
           "allowed_users",
           "cover",
@@ -173,7 +172,8 @@
           "owner",
           "guid",
           "updatedCount",
-          "generatedAt"
+          "generatedAt",
+          "slug"
         ]
       },
       "conditions": [],

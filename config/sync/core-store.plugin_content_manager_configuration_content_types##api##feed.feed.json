@@ -47,20 +47,6 @@
           "sortable": true
         }
       },
-      "slug": {
-        "edit": {
-          "label": "slug",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "slug",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "public": {
         "edit": {
           "label": "public",
@@ -217,6 +203,20 @@
                 "sortable": true
             }
         },
+        "slug": {
+            "edit": {
+                "label": "slug",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "slug",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -277,6 +277,12 @@
       }
     },
     "layouts": {
+        "list": [
+            "id",
+            "title",
+            "description",
+            "public"
+        ],
       "edit": [
         [
           {
@@ -327,10 +333,6 @@
           [
               {
                   "name": "guid",
-                  "size": 6
-              },
-          {
-              "name": "slug",
             "size": 6
           }
         ],
@@ -349,13 +351,13 @@
                   "name": "generatedAt",
                   "size": 6
           }
-        ]
-      ],
-        "list": [
-            "id",
-            "title",
-            "description",
-            "public"
+          ],
+          [
+              {
+                  "name": "slug",
+                  "size": 6
+              }
+          ]
       ]
     },
     "uid": "api::feed.feed"
