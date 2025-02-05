@@ -90,6 +90,48 @@
                 "sortable": true
             }
         },
+        "data": {
+            "edit": {
+                "label": "data",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": false
+            },
+            "list": {
+                "label": "data",
+                "searchable": true,
+                "sortable": true
+            }
+        },
+        "description": {
+            "edit": {
+                "label": "description",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "description",
+                "searchable": true,
+                "sortable": true
+            }
+        },
+        "duration": {
+            "edit": {
+                "label": "duration",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "duration",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -155,32 +197,50 @@
           {
             "name": "title",
             "size": 6
+          },
+          {
+              "name": "description",
+              "size": 6
           }
         ],
           [
-          {
-              "name": "audio",
-              "size": 6
+              {
+                  "name": "audio",
+                  "size": 8
           },
+              {
+                  "name": "duration",
+                  "size": 4
+              }
+          ],
+          [
               {
                   "name": "cover",
             "size": 6
-          }
-        ],
-        [
+              },
           {
             "name": "feeds",
             "size": 6
-          },
-            {
-                "name": "guid",
-                "size": 6
           }
+          ],
+          [
+              {
+                  "name": "guid",
+                  "size": 6
+          }
+          ],
+          [
+              {
+                  "name": "data",
+                  "size": 12
+              }
         ]
       ],
         "list": [
             "id",
-            "title"
+            "title",
+            "data",
+            "description"
       ]
     },
     "uid": "api::episode.episode"

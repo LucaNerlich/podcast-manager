@@ -8,6 +8,7 @@ export interface Episode {
     createdAt: string;
     updatedAt: string;
     publishedAt?: string;
+    duration: number;
     guid: string;
     audio: Media;
     feeds: Feed[];

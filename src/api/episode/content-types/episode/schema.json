@@ -32,16 +32,27 @@
       "mappedBy": "episodes"
     },
       "cover": {
+          "type": "media",
+          "multiple": false,
+          "required": true,
           "allowedTypes": [
               "images",
               "files"
-          ],
-          "type": "media",
-          "multiple": false,
-          "required": true
+          ]
       },
       "guid": {
           "type": "uid"
+      },
+      "data": {
+          "type": "text"
+      },
+      "description": {
+          "type": "text"
+      },
+      "duration": {
+          "type": "integer",
+          "min": 1,
+          "required": true
     }
   }
 }

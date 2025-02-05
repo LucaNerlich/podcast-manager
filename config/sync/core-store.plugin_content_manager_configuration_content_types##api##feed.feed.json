@@ -175,6 +175,20 @@
                 "sortable": true
             }
         },
+        "guid": {
+            "edit": {
+                "label": "guid",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": false
+            },
+            "list": {
+                "label": "guid",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -268,21 +282,27 @@
         ],
         [
           {
-              "name": "slug",
-            "size": 6
-          },
-          {
-            "name": "cover",
+              "name": "cover",
             "size": 6
           }
         ],
-        [
-            {
-                "name": "allowed_users",
-                "size": 6
-            },
+          [
           {
-            "name": "episodes",
+              "name": "episodes",
+            "size": 6
+          },
+              {
+                  "name": "allowed_users",
+                  "size": 6
+              }
+          ],
+          [
+              {
+                  "name": "guid",
+                  "size": 6
+              },
+          {
+              "name": "slug",
             "size": 6
           }
         ],

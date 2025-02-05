@@ -6,7 +6,7 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "hblgzyc4j63kv7igqb11ttis",
+        "documentId": "zw2aqwo69rfl4v84z3vxgcgm",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -16,7 +16,10 @@
             "audio",
             "feeds",
             "cover",
-            "guid"
+            "guid",
+            "data",
+            "description",
+            "duration"
         ]
       },
       "conditions": [],
@@ -41,7 +44,7 @@
       "locale": null
     },
     {
-        "documentId": "oss1o1ezd5l56y9buii0x479",
+        "documentId": "hpmd3p0w4uoa4sccyozyu4k3",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -51,14 +54,17 @@
             "audio",
             "feeds",
             "cover",
-            "guid"
+            "guid",
+            "data",
+            "description",
+            "duration"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-        "documentId": "by2862gxffmijcvejmhhr1im",
+        "documentId": "dzjzawprbu2fqc6fa7nwu42c",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -68,14 +74,17 @@
             "audio",
             "feeds",
             "cover",
-            "guid"
+            "guid",
+            "data",
+            "description",
+            "duration"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-        "documentId": "qvbw645fldy3jia8pmz3wgbg",
+        "documentId": "kwjs2i0mnp25rs38er5otcok",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -91,7 +100,8 @@
             "data",
             "email",
             "copyright",
-            "owner"
+            "owner",
+            "guid"
         ]
       },
       "conditions": [],
@@ -116,7 +126,7 @@
       "locale": null
     },
     {
-        "documentId": "iahj92z3h88mdpqtpatr231l",
+        "documentId": "bkcy0227k9psdlobob9up776",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -132,14 +142,15 @@
             "data",
             "email",
             "copyright",
-            "owner"
+            "owner",
+            "guid"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-        "documentId": "elh1aqx2oygombvdf95ikuh1",
+        "documentId": "n9obgwt8zseazsv4rv4ksgmh",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -155,7 +166,8 @@
             "data",
             "email",
             "copyright",
-            "owner"
+            "owner",
+            "guid"
         ]
       },
       "conditions": [],

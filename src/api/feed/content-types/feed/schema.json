@@ -38,7 +38,7 @@
     "cover": {
       "type": "media",
       "multiple": false,
-        "required": true,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
@@ -67,6 +67,9 @@
       "type": "string",
       "required": true,
       "default": "Some Owner"
+    },
+    "guid": {
+      "type": "uid"
     }
   }
 }

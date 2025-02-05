@@ -26,6 +26,8 @@ export default {
             indent: 2,
             newline: "\n",
         });
+
+        event.params.data.guid = crypto.randomUUID();
     },
 
     afterCreate(event) {
