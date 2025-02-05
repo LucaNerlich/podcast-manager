@@ -31,7 +31,7 @@ export default {
     },
 
     async beforeUpdate(event) {
-        //console.log("beforeUpdate - feed", event.params.data);
+        console.log("beforeUpdate - feed", event.params.data);
         //console.log("connect", event.params.data.episodes.connect);
         //console.log("disconnect", event.params.data.episodes.disconnect);
 

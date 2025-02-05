@@ -42,8 +42,6 @@ export default {
             ...(event.params.data.feeds.disconnect?.map(feed => feed.id) || [])
         ];
 
-        console.log("feedIds", feedIds);
-
 
         // gather documentIds for affected ids
         const feeds = await strapi.db.query('api::feed.feed').findMany({
@@ -61,14 +59,13 @@ export default {
             await strapi.documents('api::feed.feed').update({
                 documentId: feed.documentId,
                 data: {
+                    //@ts-ignore
                     updatedCount: feed.updatedCount ? feed.updatedCount + 1 : 1
                 }
             });
         }
-
-        console.log("feeds", feeds);
     },
     async afterUpdate(event) {
-        const {result, params} = event;
+        // const {result, params} = event;
     }
 };
