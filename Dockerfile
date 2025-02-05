@@ -45,7 +45,7 @@ RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=produc
 ENV PATH=/opt/node_modules/.bin:$PATH
 
 WORKDIR /opt/app
-COPY ./projects/strapi/cffc-v4 .
+COPY . .
 RUN npm run build
 
 # Creating final production image
