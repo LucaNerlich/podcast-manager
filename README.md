@@ -48,6 +48,8 @@ Bucket CORS
             "GET"
         ],
         "AllowedOrigins": [
+            "http://localhost:1337",
+            "127.0.0.1",
             "https://podcastmanager.lucanerlich.com"
         ],
         "ExposeHeaders": []
