@@ -32,6 +32,7 @@ export default () => ({
                     },
                 },
             },
+            sizeLimit: 5737418240,
         },
     },
 });

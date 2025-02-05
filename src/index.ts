@@ -26,5 +26,9 @@ export default {
                 event.params.data.token = crypto.randomUUID();
             },
         });
+
+        // https://docs.strapi.io/dev-docs/plugins/upload#max-file-size
+        // Set the requestTimeout to 1,800,000 milliseconds (30 minutes):
+        strapi.server.httpServer.requestTimeout = 30 * 60 * 1000;
     },
 };
