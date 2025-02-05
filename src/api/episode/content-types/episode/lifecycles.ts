@@ -60,6 +60,7 @@ export default {
                 documentId: feed.documentId,
                 data: {
                     //@ts-ignore
+                    documentId: feed.documentId,
                     updatedCount: feed.updatedCount ? feed.updatedCount + 1 : 1
                 }
             });

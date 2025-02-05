@@ -35,17 +35,11 @@ export default {
         //console.log("connect", event.params.data.episodes.connect);
         //console.log("disconnect", event.params.data.episodes.disconnect);
 
-        // do something to the result;
-    },
-    async afterUpdate(event) {
-        const {result, params} = event;
-        console.log("result - afterUpdate", result);
-
         const feed = await strapi.documents('api::feed.feed').findOne({
-            documentId: result.documentId,
+            documentId: event.params.data.documentId,
             populate: ['episodes'],
         });
-
-        //console.log("feed", feed);
+        console.log("feed", feed);
+        // DO THE UPDATING VIA CRONJOB
     }
 };

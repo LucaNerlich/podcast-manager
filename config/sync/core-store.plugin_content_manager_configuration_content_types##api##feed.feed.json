@@ -203,6 +203,20 @@
                 "sortable": true
             }
         },
+        "lastGeneratedAt": {
+            "edit": {
+                "label": "lastGeneratedAt",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": false
+            },
+            "list": {
+                "label": "lastGeneratedAt",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -328,8 +342,12 @@
           ],
           [
               {
+                  "name": "lastGeneratedAt",
+                  "size": 6
+              },
+              {
                   "name": "updatedCount",
-                  "size": 12
+                  "size": 6
           }
         ]
       ],
