@@ -6,6 +6,7 @@ export interface Feed {
     title: string;
     description: string;
     slug: string;
+    link: string;
     guid: string;
     public: boolean;
     createdAt: string;

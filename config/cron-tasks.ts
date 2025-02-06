@@ -12,6 +12,7 @@ function generateFeed(feed) {
                 <description>${feed.description}</description>
                 <language>de</language>
                 <copyright>${feed.copyright}</copyright>
+                <link>${feed.link}</link>
                 <itunes:category text="Leisure"/>
                 <itunes:owner>
                     <itunes:name>${feed.owner}</itunes:name>

@@ -73,6 +73,9 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "link": {
+      "type": "string"
     }
   }
 }
