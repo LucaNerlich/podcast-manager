@@ -17,5 +17,4 @@ export interface Feed {
     copyright: string;
     owner: string;
     episodes: Episode[];
-    updatedCount: number;
 }

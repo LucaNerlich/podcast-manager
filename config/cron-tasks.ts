@@ -2,7 +2,6 @@ import prettify from "prettify-xml";
 
 function generateFeed(feed) {
     const episodes = feed.episodes;
-    console.log("feed", feed);
     return `
         <rss version="2.0" 
         xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
@@ -52,6 +51,7 @@ export default {
 
                 // Skip unchanged feeds
                 // only works, if episodes do not use the draft/publish system
+                // adding an episode from the episodes side, does not change the updatedAt time
                 if (new Date(feed.generatedAt).getTime() + 2000 > new Date(feed.updatedAt).getTime()) {
                     console.info("Skipped unmodified feed - " + feed.documentId)
                     continue

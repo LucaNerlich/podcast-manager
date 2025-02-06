@@ -175,20 +175,6 @@
                 "sortable": true
             }
         },
-        "updatedCount": {
-            "edit": {
-                "label": "updatedCount",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": false
-            },
-            "list": {
-                "label": "updatedCount",
-                "searchable": true,
-                "sortable": true
-            }
-        },
         "generatedAt": {
             "edit": {
                 "label": "generatedAt",
@@ -343,10 +329,6 @@
           }
           ],
           [
-              {
-                  "name": "updatedCount",
-                  "size": 6
-              },
               {
                   "name": "generatedAt",
                   "size": 6

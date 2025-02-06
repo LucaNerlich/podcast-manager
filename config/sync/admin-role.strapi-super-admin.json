@@ -90,7 +90,7 @@
       "locale": null
     },
     {
-      "documentId": "tq9km5bq8f9d9oguq4rfwagd",
+        "documentId": "kdj9mjirhuxe9deby0lr2icm",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -107,7 +107,6 @@
           "copyright",
           "owner",
           "guid",
-          "updatedCount",
           "generatedAt",
           "slug"
         ]
@@ -134,7 +133,7 @@
       "locale": null
     },
     {
-      "documentId": "cefb6yk4vu00hpae38v082qb",
+        "documentId": "zppriwdmw1o1kej384djl68t",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -151,7 +150,6 @@
           "copyright",
           "owner",
           "guid",
-          "updatedCount",
           "generatedAt",
           "slug"
         ]
@@ -160,7 +158,7 @@
       "locale": null
     },
     {
-      "documentId": "t41qtr9k4ewywtpd5l238s8o",
+        "documentId": "mm8hsgny02468pilxe9qlwtd",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -177,7 +175,6 @@
           "copyright",
           "owner",
           "guid",
-          "updatedCount",
           "generatedAt",
           "slug"
         ]

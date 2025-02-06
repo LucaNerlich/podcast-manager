@@ -31,4 +31,30 @@ export default {
             newline: "\n",
         });
     },
+    async afterUpdate(event) {
+        const {result, params} = event;
+        // gather documentIds of attached feeds, since the event relation is unpopulated
+        const episode = await strapi.documents('api::episode.episode').findOne({
+            documentId: result.documentId,
+            // @ts-ignore
+            populate: {
+                feeds: {
+                    fields: ['documentId']
+                }
+            },
+        })
+
+        // 'fake' update all affected feeds,
+        // to re-trigger their update lifecycle hook which in turn re-generates the feed.xml
+        // @ts-ignore
+        for (const feed of episode.feeds) {
+            await strapi.documents('api::feed.feed').update({
+                documentId: feed.documentId,
+                data: {
+                    updatedAt: new Date(),
+                }
+            });
+            console.info("Updated Feed from Episode - " + feed.documentId)
+        }
+    }
 };
