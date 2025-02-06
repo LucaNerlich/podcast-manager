@@ -21,5 +21,10 @@ export default {
             path: '/feeds/slug/:slug/token/:userToken',
             handler: 'feed.findBySlugAndUserToken',
         },
+        {
+            method: 'GET',
+            path: '/feeds/public',
+            handler: 'feed.findPublic',
+        },
     ],
 }
