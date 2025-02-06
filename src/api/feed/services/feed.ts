@@ -2,7 +2,6 @@ import {factories} from '@strapi/strapi';
 
 export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
     async findOne(params) {
-        console.log("params", params);
         const {documentId, slug, userToken} = params;
 
         const filters: any = {};
@@ -14,8 +13,6 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
             filters: filters,
             populate: ['allowed_users'],
         });
-
-        console.log("result", result);
 
         if (!result) return null;
 
