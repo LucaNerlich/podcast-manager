@@ -24,6 +24,7 @@ function generateFeed(feed) {
                 ${episodes
         .filter((episode) => episode.draft === false)
         .filter((episode) => new Date(episode.releasedAt).getTime() < new Date().getTime())
+        .sort((a, b) => new Date(b.releasedAt).getTime() - new Date(a.releasedAt).getTime())
         .map((episode) => episode.data).join('')}
             </channel>
         </rss>
