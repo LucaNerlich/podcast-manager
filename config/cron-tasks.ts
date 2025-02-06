@@ -24,6 +24,7 @@ function generateFeed(feed) {
                 <itunes:image href="${feed.cover?.url}"/>
                 ${episodes
         .filter((episode) => episode.draft === false)
+        .filter((episode) => new Date(episode.releasedAt).getTime() < new Date().getTime())
         .map((episode) => episode.data).join('')}
             </channel>
         </rss>
