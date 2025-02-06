@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+            "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
         "audio": {
         "edit": {
-            "label": "audio",
+            "label": "Audio File",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
         "cover": {
             "edit": {
-                "label": "cover",
+                "label": "Episode Cover Image",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -106,7 +106,7 @@
         },
         "description": {
             "edit": {
-                "label": "description",
+                "label": "Description",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -120,7 +120,7 @@
         },
         "duration": {
             "edit": {
-                "label": "duration",
+                "label": "Audio file duration",
                 "description": "MP3 duration in seconds",
                 "placeholder": "56478",
                 "visible": true,
@@ -134,7 +134,7 @@
         },
         "releasedAt": {
             "edit": {
-                "label": "releasedAt",
+                "label": "When should this episode be released?",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -148,8 +148,8 @@
         },
         "draft": {
             "edit": {
-                "label": "draft",
-                "description": "enable, to remove this episode from the feed",
+                "label": "Hide in Feed",
+                "description": "Episode will not be public, if set to true.",
                 "placeholder": "",
                 "visible": true,
                 "editable": true
