@@ -6,7 +6,7 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "ck1e1oxjfqve9okgjyebrerj",
+        "documentId": "m7ga7rbs8d5o5rcstnkhkhu3",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -21,7 +21,8 @@
           "description",
             "duration",
             "releasedAt",
-            "draft"
+            "draft",
+            "link"
         ]
       },
       "conditions": [],
@@ -46,7 +47,7 @@
       "locale": null
     },
     {
-        "documentId": "hlpv0svh5qj1yp15uk63nnw4",
+        "documentId": "lcpt2uy1ek2jawrzfxgwx0ty",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -61,14 +62,15 @@
           "description",
             "duration",
             "releasedAt",
-            "draft"
+            "draft",
+            "link"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-        "documentId": "xt2cufn2wsin5zi0v4v2i08g",
+        "documentId": "w8d4ts7dymzxcxcztz08ui0o",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -83,7 +85,8 @@
           "description",
             "duration",
             "releasedAt",
-            "draft"
+            "draft",
+            "link"
         ]
       },
       "conditions": [],

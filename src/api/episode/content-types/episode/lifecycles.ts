@@ -11,6 +11,7 @@ function generateItem(event) {
             <description>${event.params.data.description}</description>
             <itunes:explicit>false</itunes:explicit>
             <itunes:duration>${event.params.data.duration}</itunes:duration>
+            <link>${event.params.data.link}</link>
             <enclosure url="${event.params.data.audio.url}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
         </item>
         `;

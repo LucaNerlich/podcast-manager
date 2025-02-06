@@ -62,6 +62,9 @@
           "type": "boolean",
           "default": false,
           "required": true
+      },
+      "link": {
+          "type": "string"
     }
   }
 }

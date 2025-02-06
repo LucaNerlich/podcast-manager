@@ -160,6 +160,20 @@
                 "sortable": true
             }
         },
+        "link": {
+            "edit": {
+                "label": "Website or Blog-Post",
+                "description": "",
+                "placeholder": "https://www.patreon.com/c/stayforever/posts?filters%5Btag%5D=Stainless+Steel+Rat",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "link",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -264,6 +278,10 @@
           [
               {
                   "name": "guid",
+                  "size": 6
+              },
+              {
+                  "name": "link",
                   "size": 6
           }
           ],

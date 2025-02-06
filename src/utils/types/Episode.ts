@@ -5,6 +5,7 @@ export interface Episode {
     id: number;
     documentId: string;
     title: string;
+    link: string;
     createdAt: string;
     updatedAt: string;
     publishedAt?: string;
