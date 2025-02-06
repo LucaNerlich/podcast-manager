@@ -51,6 +51,7 @@ export default {
             await strapi.documents('api::feed.feed').update({
                 documentId: feed.documentId,
                 data: {
+                    // @ts-ignore
                     updatedAt: new Date(),
                 }
             });
