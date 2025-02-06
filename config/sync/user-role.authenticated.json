@@ -6,18 +6,23 @@
     "locale": null,
     "permissions": [
         {
-            "documentId": "briju91u4r327m7tnbxfcyh2",
-            "action": "api::episode.episode.find",
+            "documentId": "r3lcld2jrotiwwib5mfq97j9",
+            "action": "api::feed.feed.findByDocumentId",
             "locale": null
         },
         {
-            "documentId": "o2ryh67aviokzea6zhfcqovn",
-            "action": "api::episode.episode.findOne",
+            "documentId": "v7i549jabhurixds3kuvxkz1",
+            "action": "api::feed.feed.findByDocumentIdAndUserToken",
             "locale": null
         },
         {
-            "documentId": "t5auz4l9geyfrkm9pwlssrt3",
-            "action": "api::feed.feed.findOne",
+            "documentId": "psz9vahg3572tw9lecksomd0",
+            "action": "api::feed.feed.findBySlug",
+            "locale": null
+        },
+        {
+            "documentId": "gdn1fvzzhicbsqeho9kj1qu0",
+            "action": "api::feed.feed.findBySlugAndUserToken",
             "locale": null
         },
         {

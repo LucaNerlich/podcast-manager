@@ -26,11 +26,6 @@
           "locale": null
       },
       {
-          "documentId": "j5j5tua62hkizatgvplmfs50",
-          "action": "api::feed.feed.findOne",
-          "locale": null
-    },
-      {
       "documentId": "jwp1taamg7gmyxvcgociqv1s",
       "action": "plugin::users-permissions.auth.callback",
       "locale": null
