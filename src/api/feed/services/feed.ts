@@ -4,15 +4,12 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
     async findOne(params) {
         console.log("params", params);
         const {documentId, slug, userToken} = params;
-        const query: any = {};
 
-        let filters: any = {};
+        const filters: any = {};
 
         if (documentId !== undefined) filters.documentId = {$eq: documentId};
         if (slug !== undefined) filters.slug = {$eq: slug};
-        if (userToken !== undefined) filters.userToken = userToken;
 
-        console.log("filters", filters);
         const result: any = await strapi.documents('api::feed.feed').findFirst({
             filters: filters,
             populate: ['allowed_users'],
@@ -20,17 +17,17 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
 
         console.log("result", result);
 
-        // if (documentId !== undefined) query.documentId = documentId;
-        // if (slug !== undefined) query.slug = slug;
-        // if (userToken !== undefined) query.userToken = userToken;
+        if (!result) return null;
 
+        // public feed, just return
+        if (result.public) return result.data;
 
-        // const result = await strapi.documents('api::feed.feed').findFirst({
-        //     filters: {
-        //     }
-        // })
-        const entity = await strapi.db.query('api::feed.feed').findOne({where: query});
-        console.log("entity", entity);
-        return result;
+        // private feed, but no user token passed
+        if (!userToken) return null;
+
+        // private feed, but user token does not have access
+        if (!result.allowed_users.some(user => user.token === userToken)) return null;
+
+        return result.data;
     },
 }));
