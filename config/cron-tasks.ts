@@ -22,7 +22,7 @@ function generateFeed(feed) {
                 <itunes:type>episodic</itunes:type>
                 <itunes:image href="${feed.cover?.url}"/>
                 ${episodes
-        .filter((episode) => episode.draft === false)
+        .filter((episode) => episode.draft === false || episode.draft === undefined || episode.draft === null)
         .filter((episode) => new Date(episode.releasedAt).getTime() < new Date().getTime())
         .sort((a, b) => new Date(b.releasedAt).getTime() - new Date(a.releasedAt).getTime())
         .map((episode) => episode.data).join('')}
@@ -42,6 +42,7 @@ export default {
                 populate: ['episodes', 'cover'],
                 status: 'published',
             });
+
 
             for (const feed of feeds) {
                 // Skip empty feeds
