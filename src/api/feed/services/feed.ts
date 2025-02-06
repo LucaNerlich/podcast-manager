@@ -4,8 +4,6 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
     async findOne(params) {
         const {documentId, slug, userToken} = params;
 
-        console.log("documentId", documentId);
-
         const filters: any = {};
 
         if (documentId !== undefined) filters.documentId = {$eq: documentId};
