@@ -62,4 +62,9 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
         ctx.response.type = 'application/xml';
         return entity ? ctx.send(entity) : ctx.notFound();
     },
+
+    async findPublic(ctx) {
+        const entity = await strapi.service('api::feed.feed').findPublic();
+        return entity ? ctx.send(entity) : ctx.notFound();
+    },
 }));

@@ -4,6 +4,8 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
     async findOne(params) {
         const {documentId, slug, userToken} = params;
 
+        console.log("documentId", documentId);
+
         const filters: any = {};
 
         if (documentId !== undefined) filters.documentId = {$eq: documentId};
@@ -27,4 +29,20 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
 
         return result.data;
     },
+
+    async findPublic() {
+        const feeds = await strapi.documents('api::feed.feed').findMany({
+            filters: {
+                public: true,
+            }
+        });
+
+        return feeds.map(feed => {
+            return {
+                title: feed.title,
+                slug: feed.slug,
+                url: `https://podcastmanager.lucanerlich.com/api/feeds/documentId/${feed.documentId}`,
+            };
+        })
+    }
 }));
