@@ -132,6 +132,34 @@
                 "sortable": true
             }
         },
+        "releasedAt": {
+            "edit": {
+                "label": "releasedAt",
+                "description": "",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "releasedAt",
+                "searchable": true,
+                "sortable": true
+            }
+        },
+        "draft": {
+            "edit": {
+                "label": "draft",
+                "description": "enable, to remove this episode from the feed",
+                "placeholder": "",
+                "visible": true,
+                "editable": true
+            },
+            "list": {
+                "label": "draft",
+                "searchable": true,
+                "sortable": true
+            }
+        },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -211,6 +239,16 @@
               {
                   "name": "cover",
             "size": 6
+              }
+          ],
+          [
+              {
+                  "name": "releasedAt",
+                  "size": 6
+              },
+              {
+                  "name": "draft",
+                  "size": 6
               }
           ],
           [

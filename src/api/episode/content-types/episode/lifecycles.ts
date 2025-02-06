@@ -4,7 +4,7 @@ function generateItem(event) {
     return `
         <item>
             <title>${event.params.data.title}</title>
-            <pubDate>${new Date(event.params.data.publishedAt).toUTCString()}</pubDate>
+            <pubDate>${new Date(event.params.data.releasedAt).toUTCString()}</pubDate>
             <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
             <guid isPermaLink="false">${event.params.data.guid}</guid>
             <itunes:image href="${event.params.data.cover.url}"/>

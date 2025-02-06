@@ -22,7 +22,9 @@ function generateFeed(feed) {
                 <itunes:explicit>false</itunes:explicit>
                 <itunes:type>episodic</itunes:type>
                 <itunes:image href="${feed.cover?.url}"/>
-                ${episodes.map((episode) => episode.data).join('')}
+                ${episodes
+        .filter((episode) => episode.draft === false)
+        .map((episode) => episode.data).join('')}
             </channel>
         </rss>
         `;
@@ -48,12 +50,11 @@ export default {
                 }
 
                 // Skip unchanged feeds
-                // this does not work, since publish and unpublishing episodes does not change the feed update time
-                // maybe we do have to, once again, manually update the updateCount in a feed from an episode lifecyle hook to retrigger the updatedAt timestamp
-                // if (new Date(feed.generatedAt).getTime() + 2000 > new Date(feed.updatedAt).getTime()) {
-                //     console.info("Skipped unmodified feed - " + feed.documentId)
-                //     continue
-                // }
+                // only works, if episodes do not use the draft/publish system
+                if (new Date(feed.generatedAt).getTime() + 2000 > new Date(feed.updatedAt).getTime()) {
+                    console.info("Skipped unmodified feed - " + feed.documentId)
+                    continue
+                }
 
                 const generatedFeed = prettify(generateFeed(feed), {
                     indent: 2,
