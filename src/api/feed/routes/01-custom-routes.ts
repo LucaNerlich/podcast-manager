@@ -13,12 +13,12 @@ export default {
         },
         {
             method: 'GET',
-            path: '/feeds/documentId/:documentId/userToken/:userToken',
+            path: '/feeds/documentId/:documentId/token/:userToken',
             handler: 'feed.findByDocumentIdAndUserToken',
         },
         {
             method: 'GET',
-            path: '/feeds/slug/:slug/userToken/:userToken',
+            path: '/feeds/slug/:slug/token/:userToken',
             handler: 'feed.findBySlugAndUserToken',
         },
     ],
