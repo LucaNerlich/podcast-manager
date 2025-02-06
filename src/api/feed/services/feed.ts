@@ -13,9 +13,11 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
 
         const result: any = await strapi.documents('api::feed.feed').findFirst({
             filters: filters,
+            fields: ['data', 'public'],
             populate: ['allowed_users'],
         });
 
+        // no feed found
         if (!result) return null;
 
         // public feed, just return
@@ -34,7 +36,9 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
         const feeds = await strapi.documents('api::feed.feed').findMany({
             filters: {
                 public: true,
-            }
+            },
+            // @ts-ignore
+            fields: ['title', 'slug', 'documentId'],
         });
 
         return feeds.map(feed => {
