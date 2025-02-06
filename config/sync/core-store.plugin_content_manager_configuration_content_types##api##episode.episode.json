@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+            "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,

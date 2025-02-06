@@ -33,5 +33,33 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
 
         delete feed.allowed_users;
         return feed;
-    }
+    },
+
+    async findByDocumentId(ctx) {
+        const {documentId} = ctx.params;
+        const entity = await strapi.service('api::feed.feed').findOne({documentId});
+        ctx.response.type = 'application/xml';
+        return entity ? ctx.send(entity) : ctx.notFound();
+    },
+
+    async findBySlug(ctx) {
+        const {slug} = ctx.params;
+        const entity = await strapi.service('api::feed.feed').findOne({slug});
+        ctx.response.type = 'application/xml';
+        return entity ? ctx.send(entity) : ctx.notFound();
+    },
+
+    async findByDocumentIdAndUserToken(ctx) {
+        const {documentId, userToken} = ctx.params;
+        const entity = await strapi.service('api::feed.feed').findOne({documentId, userToken});
+        ctx.response.type = 'application/xml';
+        return entity ? ctx.send(entity) : ctx.notFound();
+    },
+
+    async findBySlugAndUserToken(ctx) {
+        const {slug, userToken} = ctx.params;
+        const entity = await strapi.service('api::feed.feed').findOne({slug, userToken});
+        ctx.response.type = 'application/xml';
+        return entity ? ctx.send(entity) : ctx.notFound();
+    },
 }));

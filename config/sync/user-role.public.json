@@ -6,10 +6,25 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "j5j5tua62hkizatgvplmfs50",
-        "action": "api::feed.feed.findOne",
+        "documentId": "cnai48rugsxzfvme6va5iui2",
+        "action": "api::feed.feed.findByDocumentId",
         "locale": null
     },
+      {
+          "documentId": "jt5hy8s0q0ht2swcsp0l2wz8",
+          "action": "api::feed.feed.findByDocumentIdAndUserToken",
+          "locale": null
+      },
+      {
+          "documentId": "ur5swivzl0faz40jthqbcs20",
+          "action": "api::feed.feed.findBySlug",
+          "locale": null
+      },
+      {
+          "documentId": "dng8okn5b8ntycmczabl6nt3",
+          "action": "api::feed.feed.findBySlugAndUserToken",
+          "locale": null
+      },
       {
       "documentId": "jwp1taamg7gmyxvcgociqv1s",
       "action": "plugin::users-permissions.auth.callback",
