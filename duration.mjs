@@ -44,7 +44,7 @@ async function processFolder(folderPath) {
         console.log(`  Duration: ${duration.toFixed(2)} seconds\n`);
       } else {
         console.log(`File: ${file}`);
-        console.log(`  Could not determine duration.\n`);
+        console.log(`Could not determine duration.\n`);
       }
     }
   } catch (error) {
