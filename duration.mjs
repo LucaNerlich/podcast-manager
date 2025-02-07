@@ -1,12 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-const mm = require('music-metadata');
+import {parseFile} from 'music-metadata';
+import {existsSync, lstatSync, readdirSync} from "node:fs";
+import path from "node:path";
+
+/*
+windows:
+node duration.mjs "C:\Users\lucan\Nextcloud\_media\_DTTD - Supercuts\_supercuts"
+ */
 
 // Function to get the MP3 duration for a single file
 async function getMp3Duration(filePath) {
   try {
     // Parse the local MP3 file to get its metadata
-    const metadata = await mm.parseFile(filePath, {duration: true});
+    const metadata = await parseFile(filePath, {duration: true});
     return metadata.format.duration; // Returns duration in seconds
   } catch (error) {
     console.error(`Error reading file ${filePath}:`, error.message);
@@ -18,7 +23,7 @@ async function getMp3Duration(filePath) {
 async function processFolder(folderPath) {
   try {
     // Read all files in the folder
-    const files = fs.readdirSync(folderPath);
+    const files = readdirSync(folderPath);
 
     // Filter for files with `.mp3` extension
     const mp3Files = files.filter((file) => path.extname(file).toLowerCase() === '.mp3');
@@ -58,7 +63,7 @@ async function processFolder(folderPath) {
   }
 
   // Check if the folder path exists and is a directory
-  if (!fs.existsSync(folderPath) || !fs.lstatSync(folderPath).isDirectory()) {
+  if (!existsSync(folderPath) || !lstatSync(folderPath).isDirectory()) {
     console.error('The provided path is not a valid directory.');
     process.exit(1);
   }
