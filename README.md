@@ -1,7 +1,59 @@
-# podcast-manager
-CMS for RSS Feeds + Markdown Blog Content + Client Implementation
+# Podcast Feed Manager
 
-## Local Setup
+A headless CMS solution built with Strapi for managing RSS podcast feeds, including episodes, MP3 files, covers, and
+private access controls.
+
+## Features
+
+- **Podcast Management:** Create, update, and delete podcast feeds.
+- **Episode Management:** Add, edit, and organize episodes with MP3 file uploads.
+- **Media Management:** Built-in file handling for MP3 and image files.
+  - **Cover Art Handling:** Easily upload and manage cover images for your podcasts.
+- **Private Podcasts:** Restrict access to specific users or user groups.
+- **User Authentication:** Secure user authentication system for managing private content.
+- **API Integration:** Expose endpoints for easy integration with any frontend application.
+
+## Endpoints
+
+Private Feeds
+
+- {{host}}/api/feeds/slug/:slug/token/:token
+- {{host}}/api/feeds/documentId/:documentId/token/:token
+
+Public Feeds
+
+- {{host}}/api/feeds/slug/:slug
+- {{host}}/api/feeds/documentId/:documentId
+- {{host}}/api/feeds/public
+
+User Management
+
+> Authorization: Bearer {{jwt}}
+
+- {{host}}/api/auth/local/register
+    ```json
+    {
+    "email": "user@mail.com",
+    "username": "user@mail.com",
+    "password": "some-password"
+    }
+    ```
+- {{host}}/api/users/me
+  - Read Self
+- {{host}}/api/auth/local
+  - Login
+    ```json
+    {
+    "identifier": "user@mail.com",
+    "password": "some-password"
+    }
+    ```
+- {{host}}/api/users/{{userId}}/newToken
+  - Generate a new token for yourself
+
+## Database Setup
+
+Podcast Manager uses Postgres
 
 1. `CREATE DATABASE podcastmanager;`
 2. `CREATE ROLE podcastmanager_user WITH LOGIN PASSWORD 'changeme' CREATEDB;`
@@ -11,13 +63,15 @@ CMS for RSS Feeds + Markdown Blog Content + Client Implementation
 
 ## AWS S3
 
-Bucket ACL
+Podcast Manager saves uploaded MP3 files and Cover Images to AWS S3 via Strapi S3 Plugin.
+
+### Bucket ACL
 
 ![img.png](./assets/img.png)
 
 ![img_1.png](./assets/img_1.png)
 
-Bucket Policy
+### Bucket Policy
 
 ```json
 {
