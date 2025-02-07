@@ -3,6 +3,8 @@
 A headless CMS solution built with Strapi for managing RSS podcast feeds, including episodes, MP3 files, covers, and
 private access controls.
 
+![img.png](feeds.png)
+
 ## Features
 
 - **Podcast Management:** Create, update, and delete podcast feeds.
@@ -12,6 +14,10 @@ private access controls.
 - **Private Podcasts:** Restrict access to specific users or user groups.
 - **User Authentication:** Secure user authentication system for managing private content.
 - **API Integration:** Expose endpoints for easy integration with any frontend application.
+
+![img.png](episodes.png)
+
+![img.png](bruno.png)
 
 ## Endpoints
 
