@@ -17,6 +17,40 @@ function generateItem(event) {
         `;
 }
 
+/**
+ * Updates all feeds associated with an episode to re-trigger their update lifecycle hooks.
+ * This ensures that the associated feed data, such as the feed.xml, is regenerated.
+ *
+ * @param {Object} result The result object containing the documentId of the episode to update.
+ * @return {Promise<void>} A promise that resolves when all associated feeds have been updated.
+ */
+async function triggerFeedUpdate(result) {
+    // gather documentIds of attached feeds, since the event relation is unpopulated
+    const episode = await strapi.documents('api::episode.episode').findOne({
+        documentId: result.documentId,
+        // @ts-ignore
+        populate: {
+            feeds: {
+                fields: ['documentId']
+            }
+        },
+    })
+
+    // 'fake' update all affected feeds,
+    // to re-trigger their update lifecycle hook which in turn re-generates the feed.xml
+    // @ts-ignore
+    for (const feed of episode.feeds) {
+        await strapi.documents('api::feed.feed').update({
+            documentId: feed.documentId,
+            data: {
+                // @ts-ignore
+                updatedAt: new Date(),
+            }
+        });
+        console.info("Updated Feed from Episode - " + feed.documentId)
+    }
+}
+
 export default {
     // every "publish" action creates a new entry
     async beforeCreate(event) {
@@ -26,6 +60,10 @@ export default {
             newline: "\n",
         });
     },
+    async afterCreate(event) {
+        const {result} = event;
+        await triggerFeedUpdate(result);
+    },
     async beforeUpdate(event) {
         event.params.data.data = prettify(generateItem(event), {
             indent: 2,
@@ -33,30 +71,7 @@ export default {
         });
     },
     async afterUpdate(event) {
-        const {result, params} = event;
-        // gather documentIds of attached feeds, since the event relation is unpopulated
-        const episode = await strapi.documents('api::episode.episode').findOne({
-            documentId: result.documentId,
-            // @ts-ignore
-            populate: {
-                feeds: {
-                    fields: ['documentId']
-                }
-            },
-        })
-
-        // 'fake' update all affected feeds,
-        // to re-trigger their update lifecycle hook which in turn re-generates the feed.xml
-        // @ts-ignore
-        for (const feed of episode.feeds) {
-            await strapi.documents('api::feed.feed').update({
-                documentId: feed.documentId,
-                data: {
-                    // @ts-ignore
-                    updatedAt: new Date(),
-                }
-            });
-            console.info("Updated Feed from Episode - " + feed.documentId)
-        }
+        const {result} = event;
+        await triggerFeedUpdate(result);
     }
 };
