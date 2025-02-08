@@ -5,6 +5,8 @@ private access controls.
 
 ![img.png](./assets/feeds.png)
 
+[🇩🇪 A post about this](https://m10z.de/podcast-manager-strapi-cms)
+
 ## Features
 
 - **Podcast Management:** Create, update, and delete podcast feeds.
