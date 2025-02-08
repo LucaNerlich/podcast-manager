@@ -44,7 +44,6 @@ export default {
                 status: 'published',
             });
 
-
             for (const feed of feeds) {
                 // Skip empty feeds
                 if (!feed.episodes || feed.episodes.length === 0) {
@@ -76,11 +75,8 @@ export default {
             }
         },
         options: {
-            rule: "* * * * *", // every minute
+            rule: "*/5 * * * *", // every 5 minutes
         },
-        // options: {
-        //     rule: "*/5 * * * *", // every 5 minutes
-        // },
         // only run once after 10 seconds * * * * *
         //options: new Date(Date.now() + 10000),
     },
