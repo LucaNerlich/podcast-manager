@@ -1,0 +1,28 @@
+{
+  "key": "core_admin_project-settings",
+  "value": {
+    "menuLogo": {
+      "name": "podcastmanager-logo.jpg",
+      "hash": "podcastmanager_logo_8ae337a707",
+      "url": "https://podcast-manager.s3.eu-central-1.amazonaws.com/podcastmanager_logo_8ae337a707.jpg",
+      "width": 512,
+      "height": 512,
+      "ext": ".jpg",
+      "size": 57.26,
+      "provider": "aws-s3"
+    },
+    "authLogo": {
+      "name": "podcastmanager-logo.jpg",
+      "hash": "podcastmanager_logo_531537c714",
+      "url": "https://podcast-manager.s3.eu-central-1.amazonaws.com/podcastmanager_logo_531537c714.jpg",
+      "width": 512,
+      "height": 512,
+      "ext": ".jpg",
+      "size": 57.26,
+      "provider": "aws-s3"
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
