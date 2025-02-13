@@ -10,10 +10,10 @@
         "strapi": "strapi"
     },
     "dependencies": {
-        "@strapi/plugin-cloud": "^5.9.0",
-        "@strapi/plugin-users-permissions": "^5.9.0",
-        "@strapi/provider-upload-aws-s3": "^5.9.0",
-        "@strapi/strapi": "^5.9.0",
+        "@strapi/plugin-cloud": "^5.10.2",
+        "@strapi/plugin-users-permissions": "^5.10.2",
+        "@strapi/provider-upload-aws-s3": "^5.10.2",
+        "@strapi/strapi": "^5.10.2",
         "music-metadata": "^10.9.0",
         "pg": "~8.13.1",
         "prettify-xml": "^1.2.0",
@@ -24,7 +24,7 @@
         "styled-components": "~6.1.15"
     },
     "devDependencies": {
-        "@types/node": "^20.17.17",
+        "@types/node": "^20.17.18",
         "@types/react": "^18.3.18",
         "@types/react-dom": "^18.3.5",
         "typescript": "^5.7.3"
