@@ -47,7 +47,7 @@ async function triggerFeedUpdate(result) {
                 updatedAt: new Date(),
             }
         });
-        console.info("Updated Feed from Episode - " + feed.documentId)
+        console.info("Refreshed 'updatedAt' for Feed: {} from Episode: {}." + feed.documentId, episode.documentId)
     }
 }
 
