@@ -3,12 +3,12 @@ import prettify from "prettify-xml";
 function generateItem(event) {
     return `
         <item>
-            <title>${event.params.data.title}</title>
+            <title>${event.params.data.title.replace('&', ' und ')}</title>
             <pubDate>${new Date(event.params.data.releasedAt).toUTCString()}</pubDate>
             <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
             <guid isPermaLink="false">${event.params.data.guid}</guid>
             <itunes:image href="${event.params.data.cover.url}"/>
-            <description>${event.params.data.description}</description>
+            <description>${event.params.data.description?.replace('&', ' und ')}</description>
             <itunes:explicit>false</itunes:explicit>
             <itunes:duration>${event.params.data.duration}</itunes:duration>
             <link>${event.params.data.link}</link>
