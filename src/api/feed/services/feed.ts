@@ -60,7 +60,7 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
                 public: true,
             },
             // @ts-ignore
-            fields: ['title', 'slug', 'documentId'],
+            fields: ['title', 'slug', 'documentId', 'public'],
         });
 
         // Get private feeds the user has access to
@@ -72,7 +72,7 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
                 }
             },
             // @ts-ignore
-            fields: ['title', 'slug', 'documentId'],
+            fields: ['title', 'slug', 'documentId', 'public'],
         });
 
         // Combine and format all accessible feeds
@@ -80,6 +80,8 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
         
         return allFeeds.map(feed => {
             // Create URL based on whether the feed is public or private
+            console.log(feed);
+            console.log(feed.public);
             let url;
             if (!feed.public && user.token) {
                 url = `https://podcastmanager.lucanerlich.com/api/feeds/slug/${feed.slug}/token/${user.token}`;
@@ -91,7 +93,6 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
                 title: feed.title,
                 slug: feed.slug,
                 documentId: feed.documentId,
-                public: feed.public,
                 url: url,
             };
         });
