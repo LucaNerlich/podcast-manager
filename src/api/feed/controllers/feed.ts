@@ -77,10 +77,7 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
             const feeds = await strapi.service('api::feed.feed').findAll(user);
             
             // Return the list of feeds
-            return ctx.send({
-                status: 'success',
-                data: feeds
-            });
+            return feeds ? ctx.send(feeds) : ctx.notFound();
         } catch (error) {
             return ctx.badRequest('An error occurred while fetching feeds');
         }

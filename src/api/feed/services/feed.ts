@@ -43,7 +43,7 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
             return {
                 title: feed.title,
                 slug: feed.slug,
-                url: `https://podcastmanager.lucanerlich.com/api/feeds/documentId/${feed.documentId}`,
+                url: `https://podcastmanager.lucanerlich.com/api/feeds/slug/${feed.slug}`,
             };
         })
     },
@@ -79,11 +79,20 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
         const allFeeds = [...publicFeeds, ...privateFeeds];
         
         return allFeeds.map(feed => {
+            // Create URL based on whether the feed is public or private
+            let url;
+            if (!feed.public && user.token) {
+                url = `https://podcastmanager.lucanerlich.com/api/feeds/slug/${feed.slug}/token/${user.token}`;
+            } else {
+                url = `https://podcastmanager.lucanerlich.com/api/feeds/slug/${feed.slug}`;
+            }
+            
             return {
                 title: feed.title,
                 slug: feed.slug,
                 documentId: feed.documentId,
-                url: `https://podcastmanager.lucanerlich.com/api/feeds/documentId/${feed.documentId}`,
+                public: feed.public,
+                url: url,
             };
         });
     }
