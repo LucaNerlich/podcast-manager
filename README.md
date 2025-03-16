@@ -118,3 +118,19 @@ Bucket CORS
     }
 ]
 ```
+
+## Postgres Setup
+
+1. `sudo su - postgres` || `psql -U postgres`
+2. `CREATE DATABASE podcastmanager;`
+3. `CREATE ROLE podcastmanager_user WITH LOGIN PASSWORD 'changeme' CREATEDB;`
+4. `\du` -> display info
+5. `GRANT ALL PRIVILEGES ON DATABASE podcastmanager TO podcastmanager_user;`
+6. `ALTER USER podcastmanager_user WITH SUPERUSER;`
+    or alternatively: 
+    1. `\c podcastmanager`
+    2. `GRANT ALL PRIVILEGES ON DATABASE podcastmanager TO podcastmanager_user;`
+    - "[...] permission denied for schema public [...]"
+7. `\l` -> display info
+8. If superuser is needed, e.g for migration
+    1. `ALTER USER podcastmanager_user WITH SUPERUSER;`
