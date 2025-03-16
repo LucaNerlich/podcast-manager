@@ -46,5 +46,45 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
                 url: `https://podcastmanager.lucanerlich.com/api/feeds/documentId/${feed.documentId}`,
             };
         })
+    },
+
+    async findAll(user = null) {
+        // For non-authenticated users, show only public feeds
+        if (!user) {
+            return this.findPublic();
+        }
+
+        // For authenticated users, get all public feeds
+        const publicFeeds = await strapi.documents('api::feed.feed').findMany({
+            filters: {
+                public: true,
+            },
+            // @ts-ignore
+            fields: ['title', 'slug', 'documentId'],
+        });
+
+        // Get private feeds the user has access to
+        const privateFeeds = await strapi.documents('api::feed.feed').findMany({
+            filters: {
+                public: false,
+                allowed_users: {
+                    id: user.id
+                }
+            },
+            // @ts-ignore
+            fields: ['title', 'slug', 'documentId'],
+        });
+
+        // Combine and format all accessible feeds
+        const allFeeds = [...publicFeeds, ...privateFeeds];
+        
+        return allFeeds.map(feed => {
+            return {
+                title: feed.title,
+                slug: feed.slug,
+                documentId: feed.documentId,
+                url: `https://podcastmanager.lucanerlich.com/api/feeds/documentId/${feed.documentId}`,
+            };
+        });
     }
 }));

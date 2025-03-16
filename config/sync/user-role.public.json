@@ -6,31 +6,36 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "cnai48rugsxzfvme6va5iui2",
-        "action": "api::feed.feed.findByDocumentId",
-        "locale": null
+      "documentId": "cnai48rugsxzfvme6va5iui2",
+      "action": "api::feed.feed.findByDocumentId",
+      "locale": null
     },
-      {
-          "documentId": "jt5hy8s0q0ht2swcsp0l2wz8",
-          "action": "api::feed.feed.findByDocumentIdAndUserToken",
-          "locale": null
-      },
-      {
-          "documentId": "ur5swivzl0faz40jthqbcs20",
-          "action": "api::feed.feed.findBySlug",
-          "locale": null
-      },
-      {
-          "documentId": "dng8okn5b8ntycmczabl6nt3",
-          "action": "api::feed.feed.findBySlugAndUserToken",
-          "locale": null
-      },
-      {
-          "documentId": "sns8eu04qje6ennso1gs1btl",
-          "action": "api::feed.feed.findPublic",
-          "locale": null
-      },
-      {
+    {
+      "documentId": "jt5hy8s0q0ht2swcsp0l2wz8",
+      "action": "api::feed.feed.findByDocumentIdAndUserToken",
+      "locale": null
+    },
+    {
+      "documentId": "ur5swivzl0faz40jthqbcs20",
+      "action": "api::feed.feed.findBySlug",
+      "locale": null
+    },
+    {
+      "documentId": "dng8okn5b8ntycmczabl6nt3",
+      "action": "api::feed.feed.findBySlugAndUserToken",
+      "locale": null
+    },
+    {
+      "documentId": "sns8eu04qje6ennso1gs1btl",
+      "action": "api::feed.feed.findPublic",
+      "locale": null
+    },
+    {
+      "documentId": "nhnza42f6byubvt5bmfmzxkt",
+      "action": "api::feed.feed.list",
+      "locale": null
+    },
+    {
       "documentId": "jwp1taamg7gmyxvcgociqv1s",
       "action": "plugin::users-permissions.auth.callback",
       "locale": null

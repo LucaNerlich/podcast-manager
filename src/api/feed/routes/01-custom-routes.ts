@@ -26,5 +26,10 @@ export default {
             path: '/feeds/public',
             handler: 'feed.findPublic',
         },
+        {
+            method: 'GET',
+            path: '/feeds/list',
+            handler: 'feed.list',
+        },
     ],
 }

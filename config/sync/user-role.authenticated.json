@@ -1,49 +1,59 @@
 {
-    "documentId": "p9nnkowl6eidvteevl9rmk3n",
-    "name": "Authenticated",
-    "description": "Default role given to authenticated user.",
-    "type": "authenticated",
-    "locale": null,
-    "permissions": [
-        {
-            "documentId": "r3lcld2jrotiwwib5mfq97j9",
-            "action": "api::feed.feed.findByDocumentId",
-            "locale": null
-        },
-        {
-            "documentId": "v7i549jabhurixds3kuvxkz1",
-            "action": "api::feed.feed.findByDocumentIdAndUserToken",
-            "locale": null
-        },
-        {
-            "documentId": "psz9vahg3572tw9lecksomd0",
-            "action": "api::feed.feed.findBySlug",
-            "locale": null
-        },
-        {
-            "documentId": "gdn1fvzzhicbsqeho9kj1qu0",
-            "action": "api::feed.feed.findBySlugAndUserToken",
-            "locale": null
-        },
-        {
-            "documentId": "ki0tqttltfdbz9fnupuyh561",
-            "action": "plugin::users-permissions.auth.changePassword",
-            "locale": null
-        },
-        {
-            "documentId": "z8dd3ocup710c44elxax0qcg",
-            "action": "plugin::users-permissions.user.me",
-            "locale": null
-        },
-        {
-            "documentId": "i92tgqka92xcbis17adlre19",
-            "action": "plugin::users-permissions.user.newToken",
-            "locale": null
-        },
-        {
-            "documentId": "nzet4r1017o3p759pd1zhaxr",
-            "action": "plugin::users-permissions.user.update",
-            "locale": null
-        }
-    ]
+  "documentId": "p9nnkowl6eidvteevl9rmk3n",
+  "name": "Authenticated",
+  "description": "Default role given to authenticated user.",
+  "type": "authenticated",
+  "locale": null,
+  "permissions": [
+    {
+      "documentId": "r3lcld2jrotiwwib5mfq97j9",
+      "action": "api::feed.feed.findByDocumentId",
+      "locale": null
+    },
+    {
+      "documentId": "v7i549jabhurixds3kuvxkz1",
+      "action": "api::feed.feed.findByDocumentIdAndUserToken",
+      "locale": null
+    },
+    {
+      "documentId": "psz9vahg3572tw9lecksomd0",
+      "action": "api::feed.feed.findBySlug",
+      "locale": null
+    },
+    {
+      "documentId": "gdn1fvzzhicbsqeho9kj1qu0",
+      "action": "api::feed.feed.findBySlugAndUserToken",
+      "locale": null
+    },
+    {
+      "documentId": "trl2q61e1x1jnll4jgr86476",
+      "action": "api::feed.feed.findPublic",
+      "locale": null
+    },
+    {
+      "documentId": "whf3gwej4cyc9g9504vgbdno",
+      "action": "api::feed.feed.list",
+      "locale": null
+    },
+    {
+      "documentId": "ki0tqttltfdbz9fnupuyh561",
+      "action": "plugin::users-permissions.auth.changePassword",
+      "locale": null
+    },
+    {
+      "documentId": "z8dd3ocup710c44elxax0qcg",
+      "action": "plugin::users-permissions.user.me",
+      "locale": null
+    },
+    {
+      "documentId": "i92tgqka92xcbis17adlre19",
+      "action": "plugin::users-permissions.user.newToken",
+      "locale": null
+    },
+    {
+      "documentId": "nzet4r1017o3p759pd1zhaxr",
+      "action": "plugin::users-permissions.user.update",
+      "locale": null
+    }
+  ]
 }

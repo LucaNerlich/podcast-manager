@@ -67,4 +67,22 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
         const entity = await strapi.service('api::feed.feed').findPublic();
         return entity ? ctx.send(entity) : ctx.notFound();
     },
+
+    async list(ctx) {
+        try {
+            // Check if request is authenticated
+            const user = ctx.state.user;
+            
+            // Get feeds based on authentication status
+            const feeds = await strapi.service('api::feed.feed').findAll(user);
+            
+            // Return the list of feeds
+            return ctx.send({
+                status: 'success',
+                data: feeds
+            });
+        } catch (error) {
+            return ctx.badRequest('An error occurred while fetching feeds');
+        }
+    },
 }));
