@@ -10,7 +10,6 @@
         "strapi": "strapi"
     },
     "dependencies": {
-        "@strapi/plugin-cloud": "^5.11.2",
         "@strapi/plugin-users-permissions": "^5.11.2",
         "@strapi/provider-upload-aws-s3": "^5.11.2",
         "@strapi/strapi": "^5.11.2",
