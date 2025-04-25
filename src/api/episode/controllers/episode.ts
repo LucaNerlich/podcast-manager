@@ -3,7 +3,6 @@
  */
 
 import {factories} from '@strapi/strapi'
-import axios from 'axios';
 
 export default factories.createCoreController('api::episode.episode', ({strapi}) => ({
     async download(ctx) {
@@ -58,27 +57,36 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
                 // Format episode title as URL slug
                 const episodeSlug = episode.title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
 
-                // Send event to Umami with correct payload structure
-                await axios.post(umamiUrl, {
-                    type: "event",
-                    payload: {
-                        hostname: "podcasthub.org",
-                        language: "en-US",
-                        referrer: "",
-                        screen: "1920x1080",
-                        title: episode.title,
-                        url: `/episode/${episodeSlug}`,
-                        website: umamiWebsiteId,
-                        name: "podcast_download",
-                        data: {
-                            episode_id: id,
-                            title: episode.title
+                // Send event to Umami with correct payload structure using native fetch
+                fetch(umamiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        type: "event",
+                        payload: {
+                            hostname: "podcasthub.org",
+                            language: "en-US",
+                            referrer: "",
+                            screen: "1920x1080",
+                            title: episode.title,
+                            url: `/episode/${episodeSlug}`,
+                            website: umamiWebsiteId,
+                            name: "podcast_download",
+                            data: {
+                                episode_id: id,
+                                title: episode.title
+                            }
                         }
-                    }
+                    })
                 }).catch(err => {
                     // Log error but continue serving the file
                     console.error('Error tracking download with Umami:', err.message);
                 });
+
+                // Note: We're not awaiting the fetch since we don't want to
+                // delay serving the file if analytics is slow
             }
         } catch (error) {
             // Just log the error, but continue serving the file
