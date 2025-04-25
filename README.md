@@ -112,7 +112,7 @@ Bucket CORS
         "AllowedOrigins": [
             "http://localhost:1337",
             "127.0.0.1",
-            "https://podcasthub.org",
+            "https://podcastmanager.lucanerlich.com",
             "https://podcasthub.org"
         ],
         "ExposeHeaders": []
