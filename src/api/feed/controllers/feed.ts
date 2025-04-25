@@ -51,16 +51,45 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
 
     async findByDocumentIdAndUserToken(ctx) {
         const {documentId, userToken} = ctx.params;
-        const entity = await strapi.service('api::feed.feed').findOne({documentId, userToken});
+        const feed = await strapi.service('api::feed.feed').findOne({documentId, userToken});
+
+        if (!feed) {
+            return ctx.notFound();
+        }
+
+        // Find all episodes in this feed and modify their enclosure URLs to include the token
+        const feedData = await this.processXmlWithToken(feed, userToken);
+
         ctx.response.type = 'application/xml';
-        return entity ? ctx.send(entity) : ctx.notFound();
+        return ctx.send(feedData);
     },
 
     async findBySlugAndUserToken(ctx) {
         const {slug, userToken} = ctx.params;
-        const entity = await strapi.service('api::feed.feed').findOne({slug, userToken});
+        const feed = await strapi.service('api::feed.feed').findOne({slug, userToken});
+
+        if (!feed) {
+            return ctx.notFound();
+        }
+
+        // Find all episodes in this feed and modify their enclosure URLs to include the token
+        const feedData = await this.processXmlWithToken(feed, userToken);
+
         ctx.response.type = 'application/xml';
-        return entity ? ctx.send(entity) : ctx.notFound();
+        return ctx.send(feedData);
+    },
+
+    // Helper method to process XML and add token to enclosure URLs
+    async processXmlWithToken(feedData, userToken) {
+        if (!feedData) return null;
+
+        // Simple string replacement to add token to all enclosure URLs
+        // This assumes the enclosure URLs follow our proxy pattern
+        const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
+        const pattern = new RegExp(`${baseUrl}/api/episodes/(.*?)/download`, 'g');
+
+        // Replace with URLs that include the token
+        return feedData.replace(pattern, `${baseUrl}/api/episodes/$1/download?token=${userToken}`);
     },
 
     async findPublic(ctx) {
@@ -72,10 +101,10 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
         try {
             // Check if request is authenticated
             const user = ctx.state.user;
-            
+
             // Get feeds based on authentication status
             const feeds = await strapi.service('api::feed.feed').findAll(user);
-            
+
             // Return the list of feeds
             return feeds ? ctx.send(feeds) : ctx.notFound();
         } catch (error) {

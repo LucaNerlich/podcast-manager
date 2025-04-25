@@ -1,6 +1,14 @@
 import prettify from "prettify-xml";
 
 function generateItem(event) {
+    const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
+
+    // Create proxied audio URL - using the episode documentId
+    const audioUrl = `${baseUrl}/api/episodes/${event.params.data.documentId}/download`;
+
+    // For private feeds, URL would need a token query parameter added by the controller
+    // This is managed at the controller level when serving the XML feed
+
     return `
         <item>
             <title>${event.params.data.title.replace('&', ' und ')}</title>
@@ -12,7 +20,7 @@ function generateItem(event) {
             <itunes:explicit>false</itunes:explicit>
             <itunes:duration>${event.params.data.duration}</itunes:duration>
             <link>${event.params.data.link}</link>
-            <enclosure url="${event.params.data.audio.url}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
+            <enclosure url="${audioUrl}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
         </item>
         `;
 }
