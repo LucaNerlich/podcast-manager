@@ -2,7 +2,7 @@
     "name": "podcastmanager",
     "version": "1.0.0",
     "private": true,
-    "homepage": "podcastmanager.lucanerlich.com",
+    "homepage": "podcasthub.org",
     "scripts": {
         "build": "strapi build",
         "dev": "strapi develop",

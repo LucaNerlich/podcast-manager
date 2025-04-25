@@ -112,7 +112,8 @@ Bucket CORS
         "AllowedOrigins": [
             "http://localhost:1337",
             "127.0.0.1",
-            "https://podcastmanager.lucanerlich.com"
+            "https://podcasthub.org",
+            "https://podcasthub.org"
         ],
         "ExposeHeaders": []
     }
@@ -127,7 +128,7 @@ Bucket CORS
 4. `\du` -> display info
 5. `GRANT ALL PRIVILEGES ON DATABASE podcastmanager TO podcastmanager_user;`
 6. `ALTER USER podcastmanager_user WITH SUPERUSER;`
-    or alternatively: 
+   or alternatively:
     1. `\c podcastmanager`
     2. `GRANT ALL PRIVILEGES ON DATABASE podcastmanager TO podcastmanager_user;`
     - "[...] permission denied for schema public [...]"

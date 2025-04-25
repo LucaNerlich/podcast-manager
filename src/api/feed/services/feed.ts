@@ -43,7 +43,7 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
             return {
                 title: feed.title,
                 slug: feed.slug,
-                url: `https://podcastmanager.lucanerlich.com/api/feeds/slug/${feed.slug}`,
+                url: `https://podcasthub.org/api/feeds/slug/${feed.slug}`,
             };
         })
     },
@@ -77,18 +77,18 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
 
         // Combine and format all accessible feeds
         const allFeeds = [...publicFeeds, ...privateFeeds];
-        
+
         return allFeeds.map(feed => {
             // Create URL based on whether the feed is public or private
             console.log(feed);
             console.log(feed.public);
             let url;
             if (!feed.public && user.token) {
-                url = `https://podcastmanager.lucanerlich.com/api/feeds/slug/${feed.slug}/token/${user.token}`;
+                url = `https://podcasthub.org/api/feeds/slug/${feed.slug}/token/${user.token}`;
             } else {
-                url = `https://podcastmanager.lucanerlich.com/api/feeds/slug/${feed.slug}`;
+                url = `https://podcasthub.org/api/feeds/slug/${feed.slug}`;
             }
-            
+
             return {
                 title: feed.title,
                 slug: feed.slug,
