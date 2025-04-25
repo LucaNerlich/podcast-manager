@@ -6,160 +6,168 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "ek4cl55cas7whurijhj6dkpm",
-        "action": "plugin::content-manager.explorer.create",
-        "actionParameters": {},
-        "subject": "api::episode.episode",
-        "properties": {
-            "fields": [
-                "title",
-                "audio",
-                "feeds",
-                "cover",
-                "guid",
-                "data",
-                "description",
-                "duration",
-                "releasedAt",
-                "draft"
-            ]
-        },
-        "conditions": [],
-        "locale": null
+      "documentId": "ek4cl55cas7whurijhj6dkpm",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {
+        "fields": [
+          "title",
+          "audio",
+          "feeds",
+          "cover",
+          "guid",
+          "data",
+          "description",
+          "duration",
+          "releasedAt",
+          "draft"
+        ]
+      },
+      "conditions": [],
+      "locale": null
     },
-      {
-          "documentId": "s0xnx89h6vs4y8mtspzod6p0",
-          "action": "plugin::content-manager.explorer.publish",
-          "actionParameters": {},
-          "subject": "api::episode.episode",
-          "properties": {},
-          "conditions": [],
-          "locale": null
+    {
+      "documentId": "c61jd0f5q1pztv9gjhdt9rx8",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "bd0epjsvpum8b4j4j66fyjb2",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {
+        "fields": [
+          "title",
+          "audio",
+          "feeds",
+          "cover",
+          "guid",
+          "data",
+          "description",
+          "duration",
+          "releasedAt",
+          "draft"
+        ]
       },
-      {
-          "documentId": "nr1fluuw2iy7q38db0c0izr0",
-          "action": "plugin::content-manager.explorer.read",
-          "actionParameters": {},
-          "subject": "api::episode.episode",
-          "properties": {
-              "fields": [
-                  "title",
-                  "audio",
-                  "feeds",
-                  "cover",
-                  "guid",
-                  "data",
-                  "description",
-                  "duration",
-                  "releasedAt",
-                  "draft"
-              ]
-          },
-          "conditions": [],
-          "locale": null
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "tokyl79j6ro0sxd7cye4c9yq",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {
+        "fields": [
+          "title",
+          "audio",
+          "feeds",
+          "cover",
+          "guid",
+          "data",
+          "description",
+          "duration",
+          "releasedAt",
+          "draft"
+        ]
       },
-      {
-          "documentId": "sxqudqxc0dpzisrmitffdmff",
-          "action": "plugin::content-manager.explorer.update",
-          "actionParameters": {},
-          "subject": "api::episode.episode",
-          "properties": {
-              "fields": [
-                  "title",
-                  "audio",
-                  "feeds",
-                  "cover",
-                  "guid",
-                  "data",
-                  "description",
-                  "duration",
-                  "releasedAt",
-                  "draft"
-              ]
-          },
-          "conditions": [],
-          "locale": null
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "hl3q8jgjuxjd6wqbls0ebn2p",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::feed.feed",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "public",
+          "allowed_users",
+          "cover",
+          "episodes",
+          "data",
+          "email",
+          "copyright",
+          "owner",
+          "guid",
+          "generatedAt",
+          "slug"
+        ]
       },
-      {
-          "documentId": "hl3q8jgjuxjd6wqbls0ebn2p",
-          "action": "plugin::content-manager.explorer.create",
-          "actionParameters": {},
-          "subject": "api::feed.feed",
-          "properties": {
-              "fields": [
-                  "title",
-                  "description",
-                  "public",
-                  "allowed_users",
-                  "cover",
-                  "episodes",
-                  "data",
-                  "email",
-                  "copyright",
-                  "owner",
-                  "guid",
-                  "generatedAt",
-                  "slug"
-              ]
-          },
-          "conditions": [],
-          "locale": null
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "f2xgkt3swtcwrt9677f092sp",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::feed.feed",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "public",
+          "allowed_users",
+          "cover",
+          "episodes",
+          "data",
+          "email",
+          "copyright",
+          "owner",
+          "guid",
+          "generatedAt",
+          "slug"
+        ]
       },
-      {
-          "documentId": "ioa4yfawooc7ev1s8fs6dnug",
-          "action": "plugin::content-manager.explorer.read",
-          "actionParameters": {},
-          "subject": "api::feed.feed",
-          "properties": {
-              "fields": [
-                  "title",
-                  "description",
-                  "public",
-                  "allowed_users",
-                  "cover",
-                  "episodes",
-                  "data",
-                  "email",
-                  "copyright",
-                  "owner",
-                  "guid",
-                  "generatedAt",
-                  "slug"
-              ]
-          },
-          "conditions": [
-              "admin::has-same-role-as-creator"
-          ],
-          "locale": null
+      "conditions": [
+        "admin::has-same-role-as-creator",
+        "admin::is-creator"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "ctvmnhh30rwv91sjcg6y4nd9",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::feed.feed",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "public",
+          "allowed_users",
+          "cover",
+          "episodes",
+          "data",
+          "email",
+          "copyright",
+          "owner",
+          "guid",
+          "generatedAt",
+          "slug"
+        ]
       },
-      {
-          "documentId": "wjkzw0anbckh9f4fjegsxcjd",
-          "action": "plugin::content-manager.explorer.update",
-          "actionParameters": {},
-          "subject": "api::feed.feed",
-          "properties": {
-              "fields": [
-                  "title",
-                  "description",
-                  "public",
-                  "allowed_users",
-                  "cover",
-                  "episodes",
-                  "data",
-                  "email",
-                  "copyright",
-                  "owner",
-                  "guid",
-                  "generatedAt",
-                  "slug"
-              ]
-          },
-          "conditions": [
-              "admin::has-same-role-as-creator"
-          ],
-          "locale": null
-      },
-      {
+      "conditions": [
+        "admin::has-same-role-as-creator",
+        "admin::is-creator"
+      ],
+      "locale": null
+    },
+    {
       "documentId": "nt68iolo4tkl8akk0es8e7v8",
       "action": "plugin::upload.assets.copy-link",
       "actionParameters": {},
@@ -196,14 +204,14 @@
       "locale": null
     },
     {
-        "documentId": "bjtjelfwovq4wsvlln9tkyd2",
+      "documentId": "bjtjelfwovq4wsvlln9tkyd2",
       "action": "plugin::upload.configure-view",
       "actionParameters": {},
       "subject": null,
       "properties": {},
-        "conditions": [
-            "admin::has-same-role-as-creator"
-        ],
+      "conditions": [
+        "admin::has-same-role-as-creator"
+      ],
       "locale": null
     },
     {
