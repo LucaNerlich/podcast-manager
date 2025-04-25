@@ -80,8 +80,6 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
 
         return allFeeds.map(feed => {
             // Create URL based on whether the feed is public or private
-            console.log(feed);
-            console.log(feed.public);
             let url;
             if (!feed.public && user.token) {
                 url = `https://podcasthub.org/api/feeds/slug/${feed.slug}/token/${user.token}`;
