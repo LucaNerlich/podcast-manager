@@ -5,7 +5,7 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
+        "pageSize": 50,
       "mainField": "title",
         "defaultSortBy": "id",
         "defaultSortOrder": "DESC"
@@ -14,7 +14,7 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+            "label": "Identifier",
           "searchable": true,
           "sortable": true
         }
@@ -28,7 +28,7 @@
           "editable": true
         },
         "list": {
-          "label": "title",
+            "label": "Title",
           "searchable": true,
           "sortable": true
         }
@@ -56,7 +56,7 @@
           "editable": true
         },
         "list": {
-          "label": "public",
+            "label": "Public",
           "searchable": true,
           "sortable": true
         }
@@ -85,7 +85,7 @@
           "editable": true
         },
         "list": {
-          "label": "cover",
+            "label": "Cover Art",
           "searchable": false,
           "sortable": false
         }
@@ -354,8 +354,8 @@
         "list": [
             "id",
             "title",
-            "description",
-            "public"
+            "public",
+            "cover"
       ]
     },
     "uid": "api::feed.feed"

@@ -5,7 +5,7 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
+        "pageSize": 50,
       "mainField": "title",
         "defaultSortBy": "id",
         "defaultSortOrder": "DESC"
@@ -14,7 +14,7 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+            "label": "Identifier",
           "searchable": true,
           "sortable": true
         }
@@ -28,7 +28,7 @@
           "editable": true
         },
         "list": {
-          "label": "title",
+            "label": "Title",
           "searchable": true,
           "sortable": true
         }
@@ -57,7 +57,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "feeds",
+            "label": "Feeds",
           "searchable": false,
           "sortable": false
         }
@@ -71,7 +71,7 @@
                 "editable": true
             },
             "list": {
-                "label": "cover",
+                "label": "Cover Art",
                 "searchable": false,
                 "sortable": false
             }
@@ -113,7 +113,7 @@
                 "editable": true
             },
             "list": {
-                "label": "description",
+                "label": "Description",
                 "searchable": true,
                 "sortable": true
             }
@@ -295,8 +295,9 @@
         "list": [
             "id",
             "title",
-            "data",
-            "description"
+            "description",
+            "cover",
+            "feeds"
       ]
     },
     "uid": "api::episode.episode"
