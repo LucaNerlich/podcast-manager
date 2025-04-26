@@ -131,3 +131,4 @@ build
 .strapi-cloud.json
 /types/generated/components.d.ts
 /types/generated/contentTypes.d.ts
+/http-client.private.env.json
