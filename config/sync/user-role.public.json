@@ -6,6 +6,11 @@
   "locale": null,
   "permissions": [
     {
+        "documentId": "g3lpvsk9j44rqe5vm6vn8d9m",
+        "action": "api::episode.episode.download",
+        "locale": null
+    },
+      {
       "documentId": "cnai48rugsxzfvme6va5iui2",
       "action": "api::feed.feed.findByDocumentId",
       "locale": null
@@ -28,11 +33,6 @@
     {
       "documentId": "sns8eu04qje6ennso1gs1btl",
       "action": "api::feed.feed.findPublic",
-      "locale": null
-    },
-    {
-      "documentId": "nhnza42f6byubvt5bmfmzxkt",
-      "action": "api::feed.feed.list",
       "locale": null
     },
     {

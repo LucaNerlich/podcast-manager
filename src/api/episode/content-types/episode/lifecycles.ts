@@ -1,6 +1,15 @@
 import prettify from "prettify-xml";
 
 function generateItem(event) {
+    const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
+
+    console.log("event.params.data", event.params.data);
+    // Create proxied audio URL - using the episode documentId
+    const audioUrl = `${baseUrl}/api/episodes/${event.params.data.guid}/download`;
+
+    // For private feeds, URL would need a token query parameter added by the controller
+    // This is managed at the controller level when serving the XML feed
+
     return `
         <item>
             <title>${event.params.data.title.replace('&', ' und ')}</title>
@@ -12,7 +21,7 @@ function generateItem(event) {
             <itunes:explicit>false</itunes:explicit>
             <itunes:duration>${event.params.data.duration}</itunes:duration>
             <link>${event.params.data.link}</link>
-            <enclosure url="${event.params.data.audio.url}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
+            <enclosure url="${audioUrl}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
         </item>
         `;
 }
@@ -40,6 +49,7 @@ async function triggerFeedUpdate(result) {
     // to re-trigger their update lifecycle hook which in turn re-generates the feed.xml
     // @ts-ignore
     for (const feed of episode.feeds) {
+        console.log("feed", feed);
         await strapi.documents('api::feed.feed').update({
             documentId: feed.documentId,
             data: {
@@ -47,7 +57,7 @@ async function triggerFeedUpdate(result) {
                 updatedAt: new Date(),
             }
         });
-        console.info("Refreshed 'updatedAt' for Feed: {} from Episode: {}." + feed.documentId, episode.documentId)
+        console.info(`Refreshed 'updatedAt' for Feed: ${feed.documentId} from Episode: ${episode.documentId}.`)
     }
 }
 

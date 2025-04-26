@@ -1,0 +1,171 @@
+### Environment variables
+@baseUrl = http://localhost:1337
+@adminEmail = admin@example.com
+@adminPassword = your-admin-password
+@episodeId = your-episode-document-id
+@feedId = your-feed-document-id
+@feedSlug = your-feed-slug
+@userToken = your-user-token
+@umamiUrl = https://analytics.example.com
+@umamiWebsiteId = your-website-id
+
+### ==================== AUTHENTICATION ====================
+
+### Login to get JWT token for admin operations
+# @name login
+POST {{baseUrl}}/admin/login
+Content-Type: application/json
+
+{
+  "email": "{{adminEmail}}",
+  "password": "{{adminPassword}}"
+}
+
+### Extract JWT token from login response
+@jwtToken = {{login.response.body.data.token}}
+
+### ==================== FEED ENDPOINTS ====================
+
+### List all feeds (available to authenticated & unauthenticated users)
+GET {{baseUrl}}/api/feeds/list
+Accept: application/json
+
+### Get public feeds only
+GET {{baseUrl}}/api/feeds/public
+Accept: application/json
+
+### Get feed by document ID
+GET {{baseUrl}}/api/feeds/documentId/{{feedId}}
+Accept: application/json
+
+### Get feed by slug
+GET {{baseUrl}}/api/feeds/slug/{{feedSlug}}
+Accept: application/json
+
+### Get private feed with token (by document ID)
+GET {{baseUrl}}/api/feeds/documentId/{{feedId}}/token/{{userToken}}
+Accept: application/json
+
+### Get private feed with token (by slug)
+GET {{baseUrl}}/api/feeds/slug/{{feedSlug}}/token/{{userToken}}
+Accept: application/json
+
+### Get feed XML by document ID (standard Strapi endpoint)
+GET {{baseUrl}}/api/feeds/{{feedId}}
+Accept: application/json
+
+### ==================== EPISODE ENDPOINTS ====================
+
+### Get episode by ID (standard Strapi endpoint)
+GET {{baseUrl}}/api/episodes/{{episodeId}}
+Accept: application/json
+
+### Download episode MP3 from public feed (no token required)
+GET {{baseUrl}}/api/episodes/{{episodeId}}/download
+Accept: */*
+
+### Download episode MP3 with token (private feed)
+GET {{baseUrl}}/api/episodes/{{episodeId}}/download?token={{userToken}}
+Accept: */*
+
+### Test unauthorized access to episode (should return 403)
+GET {{baseUrl}}/api/episodes/{{episodeId}}/download?token=invalid-token
+Accept: */*
+
+### ==================== CONTENT MANAGEMENT (Admin only) ====================
+
+### List all episodes
+GET {{baseUrl}}/api/episodes
+Authorization: Bearer {{jwtToken}}
+Accept: application/json
+
+### List all feeds
+GET {{baseUrl}}/api/feeds
+Authorization: Bearer {{jwtToken}}
+Accept: application/json
+
+### Create new feed
+POST {{baseUrl}}/api/feeds
+Authorization: Bearer {{jwtToken}}
+Content-Type: application/json
+
+{
+    "data": {
+        "title": "New Test Feed",
+        "description": "This is a test feed",
+        "public": true,
+        "email": "test@example.com",
+        "copyright": "All rights reserved",
+        "owner": "Test Owner",
+        "slug": "test-feed"
+    }
+}
+
+### Update feed
+PUT {{baseUrl}}/api/feeds/{{feedId}}
+Authorization: Bearer {{jwtToken}}
+Content-Type: application/json
+
+{
+    "data": {
+        "title": "Updated Test Feed"
+    }
+}
+
+### Delete feed
+DELETE {{baseUrl}}/api/feeds/{{feedId}}
+Authorization: Bearer {{jwtToken}}
+
+### Create new episode (note: this would typically be done through the admin UI with file uploads)
+POST {{baseUrl}}/api/episodes
+Authorization: Bearer {{jwtToken}}
+Content-Type: application/json
+
+{
+    "data": {
+        "title": "Test Episode",
+        "description": "This is a test episode",
+        "duration": 300,
+        "releasedAt": "2023-06-01T12:00:00.000Z",
+        "draft": false
+    }
+}
+
+### Update episode
+PUT {{baseUrl}}/api/episodes/{{episodeId}}
+Authorization: Bearer {{jwtToken}}
+Content-Type: application/json
+
+{
+    "data": {
+        "title": "Updated Test Episode"
+    }
+}
+
+### Delete episode
+DELETE {{baseUrl}}/api/episodes/{{episodeId}}
+Authorization: Bearer {{jwtToken}}
+
+### ==================== ANALYTICS TRACKING ====================
+
+### Example of what will be sent to Umami for analytics
+POST {{umamiUrl}}
+Content-Type: application/json
+
+{
+  "type": "event",
+  "payload": {
+    "hostname": "podcasthub.org",
+    "language": "en-US",
+    "referrer": "",
+    "screen": "1920x1080",
+    "title": "Example Episode Title",
+    "url": "/episode/example-episode-title",
+    "website": "{{umamiWebsiteId}}",
+    "name": "podcast_download",
+    "data": {
+      "episode_id": "{{episodeId}}",
+      "title": "Example Episode Title"
+    }
+  }
+}
