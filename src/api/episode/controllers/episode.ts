@@ -52,13 +52,14 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         try {
             const umamiUrl = process.env.UMAMI_URL;
             const umamiWebsiteId = process.env.UMAMI_WEBSITE_ID;
+            console.log("umamiUrl", umamiUrl);
 
             if (umamiUrl && umamiWebsiteId) {
                 // Format episode title as URL slug
                 const episodeSlug = episode.title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
 
                 // Send event to Umami with correct payload structure using native fetch
-                fetch(umamiUrl, {
+                const res = await fetch(umamiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -67,7 +68,7 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
                         type: "event",
                         payload: {
                             hostname: "podcasthub.org",
-                            language: "en-US",
+                            language: "de-DE",
                             referrer: "",
                             screen: "1920x1080",
                             title: episode.title,
@@ -84,7 +85,7 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
                     // Log error but continue serving the file
                     console.error('Error tracking download with Umami:', err.message);
                 });
-
+                console.log("res", res);
                 // Note: We're not awaiting the fetch since we don't want to
                 // delay serving the file if analytics is slow
             }
@@ -93,19 +94,11 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
             console.error('Error during analytics tracking:', error);
         }
 
-        // Stream the file to the client
         try {
-            // Get file stream from Strapi upload provider
             const file = episode.audio;
-
-            // Set appropriate headers
-            ctx.type = file.mime;
-            ctx.set('Content-Disposition', `attachment; filename="${file.name}"`);
-            ctx.set('Content-Length', file.size.toString());
-
-            // Stream file from provider
             const {provider} = strapi.plugins.upload;
-            return provider.send(file);
+            const signedUrlData = await provider.getSignedUrl(file);
+            ctx.redirect(signedUrlData.url);
         } catch (error) {
             console.error('Error streaming audio file:', error);
             return ctx.internalServerError('Error streaming audio file');
