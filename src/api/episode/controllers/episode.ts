@@ -3,6 +3,7 @@
  */
 
 import {factories} from '@strapi/strapi'
+import packageJson from "../../../../package.json"
 
 export default factories.createCoreController('api::episode.episode', ({strapi}) => ({
     async download(ctx) {
@@ -63,15 +64,16 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
                 const episodeSlug = episode.title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
 
                 // Send event to Umami with correct payload structure using native fetch
-                const res = await fetch(umamiUrl, {
+                fetch(umamiUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'User-Agent': `PodcastHub/${packageJson.version}`
                     },
                     body: JSON.stringify({
                         type: "event",
                         payload: {
-                            hostname: "podcasthub.org",
+                            hostname: "umami.lucanerlich.com",
                             language: "de-DE",
                             referrer: "",
                             screen: "1920x1080",
@@ -89,7 +91,6 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
                     // Log error but continue serving the file
                     console.error('Error tracking download with Umami:', err.message);
                 });
-                console.log("res", res);
                 // Note: We're not awaiting the fetch since we don't want to
                 // delay serving the file if analytics is slow
             }
@@ -99,7 +100,6 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         }
 
         try {
-            console.log("episode", episode);
             // @ts-ignore
             const file = episode.audio;
             const {provider} = strapi.plugins.upload;
