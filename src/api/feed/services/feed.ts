@@ -1,7 +1,9 @@
 import {factories} from '@strapi/strapi';
+import {track} from "../../../utils/umami";
 
 export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
     async findOne(params) {
+        // @ts-ignore
         const {documentId, slug, userToken} = params;
 
         const filters: any = {};
@@ -17,6 +19,8 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
 
         // no feed found
         if (!result) return null;
+
+        track("feed", result.title, result.guid)
 
         // public feed, just return
         if (result.public) return result.data;
