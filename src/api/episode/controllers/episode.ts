@@ -68,21 +68,21 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'User-Agent': `PodcastHub/${packageJson.version}`
+                        'User-Agent': `Mozilla/5.0 (Windows NT 10.0; Win64;) PodcastHub/${packageJson.version}`
                     },
                     body: JSON.stringify({
                         type: "event",
                         payload: {
                             hostname: "umami.lucanerlich.com",
                             language: "de-DE",
-                            referrer: "",
+                            referrer: `/episode/${episodeSlug}`,
                             screen: "1920x1080",
                             title: episode.title,
                             url: `/episode/${episodeSlug}`,
                             website: umamiWebsiteId,
-                            name: "podcast_download",
+                            name: `episode_${episodeSlug}`,
                             data: {
-                                episode_id: guid,
+                                episode_guid: guid,
                                 title: episode.title
                             }
                         }
