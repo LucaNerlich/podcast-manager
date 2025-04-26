@@ -3,8 +3,8 @@ import prettify from "prettify-xml";
 function generateItem(event) {
     const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
 
-    console.log("event.params.data", event.params.data);
-    // Create proxied audio URL - using the episode documentId
+    // Create proxied audio URL - using the episode guid,
+    // docid is not available in beforeCreate lifecycle hook
     const audioUrl = `${baseUrl}/api/episodes/${event.params.data.guid}/download`;
 
     // For private feeds, URL would need a token query parameter added by the controller
