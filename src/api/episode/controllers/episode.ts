@@ -8,6 +8,7 @@ import {track} from "../../../utils/umami";
 export default factories.createCoreController('api::episode.episode', ({strapi}) => ({
     async download(ctx) {
         const {guid} = ctx.params;
+        // set in feed controller -> processXmlWithToken
         const {token} = ctx.query;
 
         // Assuming 'guid' variable is defined and holds the GUID you want to find
@@ -31,9 +32,6 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
             return ctx.notFound('Episode not found');
         }
 
-        /* todo @fix me, of course, when simplify opening this url, the user is not passing any authentication ...
-        // todo the download url needs to also contain the userToken, but how?
-            then id need to dynamically add the token to the url on feed request
         // Check if user has access to at least one feed this episode belongs to
         let hasAccess = false;
 
@@ -56,7 +54,6 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         if (!hasAccess) {
             return ctx.forbidden('You do not have access to this audio file');
         }
-        */
 
         // Track download with Umami
         track("episode", episode.title, guid)
