@@ -6,22 +6,26 @@ import {factories} from '@strapi/strapi'
 
 export default factories.createCoreController('api::episode.episode', ({strapi}) => ({
     async download(ctx) {
-        const {id} = ctx.params;
+        const {guid} = ctx.params;
         const {token} = ctx.query;
 
-        // Find the episode
-        const episode = await strapi.documents('api::episode.episode').findOne({
-            documentId: id,
-            // @ts-ignore
+        // Assuming 'guid' variable is defined and holds the GUID you want to find
+        if (!guid) {
+            return ctx.badRequest('GUID parameter is missing');
+        }
+
+        const results = await strapi.entityService.findMany('api::episode.episode', {
+            filters: {guid: guid},
             populate: {
                 feeds: {
                     populate: ['allowed_users'],
                 },
                 audio: true
             },
+            limit: 1
         });
 
-        // If episode not found, return 404
+        const episode = results.length > 0 ? results[0] : null;
         if (!episode) {
             return ctx.notFound('Episode not found');
         }
@@ -29,6 +33,7 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         // Check if user has access to at least one feed this episode belongs to
         let hasAccess = false;
 
+        // @ts-ignore
         for (const feed of episode.feeds) {
             // Public feeds are accessible to everyone
             if (feed.public) {
@@ -52,7 +57,6 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         try {
             const umamiUrl = process.env.UMAMI_URL;
             const umamiWebsiteId = process.env.UMAMI_WEBSITE_ID;
-            console.log("umamiUrl", umamiUrl);
 
             if (umamiUrl && umamiWebsiteId) {
                 // Format episode title as URL slug
@@ -76,7 +80,7 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
                             website: umamiWebsiteId,
                             name: "podcast_download",
                             data: {
-                                episode_id: id,
+                                episode_id: guid,
                                 title: episode.title
                             }
                         }
@@ -95,6 +99,8 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         }
 
         try {
+            console.log("episode", episode);
+            // @ts-ignore
             const file = episode.audio;
             const {provider} = strapi.plugins.upload;
             const signedUrlData = await provider.getSignedUrl(file);
