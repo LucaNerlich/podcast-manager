@@ -17,7 +17,7 @@ function generateItem(event) {
             <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
             <guid isPermaLink="false">${event.params.data.guid}</guid>
             <itunes:image href="${event.params.data.cover.url}"/>
-            <description>${event.params.data.description?.replace('&', ' und ')}</description>
+            <description>${event.params.data.description?.replace('&', ' und ') || ""}</description>
             <itunes:explicit>false</itunes:explicit>
             <itunes:duration>${event.params.data.duration}</itunes:duration>
             <link>${event.params.data.link}</link>
