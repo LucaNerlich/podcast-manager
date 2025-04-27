@@ -36,6 +36,12 @@ export default factories.createCoreService('api::episode.episode', ({strapi}) =>
                 break;
             }
         }
+
+        // If no access, return 403
+        if (!hasAccess) {
+            return {};
+        }
+
         return episode;
     },
 }));
