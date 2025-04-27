@@ -3,7 +3,7 @@ import prettify from "prettify-xml";
 function generateFeed(feed) {
     const episodes = feed.episodes;
     return `
-        <rss version="2.0" 
+        <rss version="2.0"
         xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
         xmlns:atom="http://www.w3.org/2005/Atom"
         xmlns:content="http://purl.org/rss/1.0/modules/content/">
@@ -11,6 +11,7 @@ function generateFeed(feed) {
                 <title>${feed.title}</title>
                 <description>${feed.description}</description>
                 <language>de</language>
+                <public>${feed.public}</public>
                 <copyright>${feed.copyright}</copyright>
                 <link>${feed.link}</link>
                 <itunes:category text="Leisure"/>
