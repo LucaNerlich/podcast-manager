@@ -6,6 +6,16 @@
   "locale": null,
   "permissions": [
     {
+        "documentId": "nvf6rfncizqlkuev0zafomh6",
+        "action": "api::episode.episode.download",
+        "locale": null
+    },
+      {
+          "documentId": "ofn49hia0hbq2otk4zof517z",
+          "action": "api::episode.episode.fetch",
+          "locale": null
+      },
+      {
       "documentId": "r3lcld2jrotiwwib5mfq97j9",
       "action": "api::feed.feed.findByDocumentId",
       "locale": null
