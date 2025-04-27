@@ -9,6 +9,9 @@ export default factories.createCoreService('api::episode.episode', ({strapi}) =>
                 feeds: {
                     populate: ['allowed_users'],
                 },
+                cover: {
+                    fields: ['url']
+                },
                 audio: true
             },
             limit: 1
