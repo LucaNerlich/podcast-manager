@@ -27,7 +27,6 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
         }
 
         const token = searchParams.get('token');
-        console.log("token", token);
         if (!feed.allowed_users.some(user => user.token === token)) {
             return ctx.forbidden("You do not have access to this feed.");
         }

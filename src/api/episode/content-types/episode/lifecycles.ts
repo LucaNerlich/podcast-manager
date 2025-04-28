@@ -49,7 +49,6 @@ async function triggerFeedUpdate(result) {
     // to re-trigger their update lifecycle hook which in turn re-generates the feed.xml
     // @ts-ignore
     for (const feed of episode.feeds) {
-        console.log("feed", feed);
         await strapi.documents('api::feed.feed').update({
             documentId: feed.documentId,
             data: {

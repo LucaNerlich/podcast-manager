@@ -13,14 +13,14 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
 
         const result: any = await strapi.documents('api::feed.feed').findFirst({
             filters: filters,
-            fields: ['data', 'public'],
+            fields: ['data', 'public', 'slug', 'guid'],
             populate: ['allowed_users'],
         });
 
         // no feed found
         if (!result) return null;
 
-        track("feed", result.title, result.guid)
+        track("feed", result.slug, result.guid)
 
         // public feed, just return
         if (result.public) return result.data;

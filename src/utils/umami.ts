@@ -8,8 +8,6 @@ export function track(type: string, title: string, id: string) {
         if (umamiUrl && umamiWebsiteId) {
             // Format episode title as URL slug
             const slug = title?.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-
-            // Send event to Umami with correct payload structure using native fetch
             fetch(umamiUrl, {
                 method: 'POST',
                 headers: {
