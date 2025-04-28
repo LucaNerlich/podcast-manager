@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+            "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+            "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,7 +49,7 @@
       },
       "public": {
         "edit": {
-          "label": "public",
+            "label": "Make Feed Public",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "cover": {
         "edit": {
-          "label": "cover",
+            "label": "Feed Cover Image",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +92,7 @@
       },
       "episodes": {
         "edit": {
-          "label": "episodes",
+            "label": "Episodes",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,7 +107,7 @@
       },
       "data": {
         "edit": {
-          "label": "data",
+            "label": "XML Data",
             "description": "Generated XML file",
           "placeholder": "",
           "visible": true,
@@ -121,7 +121,7 @@
       },
         "email": {
             "edit": {
-                "label": "email",
+                "label": "E-Mail",
                 "description": "Owner E-Mail",
                 "placeholder": "",
                 "visible": true,
@@ -135,7 +135,7 @@
         },
         "copyright": {
             "edit": {
-                "label": "copyright",
+                "label": "Copyright",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -149,7 +149,7 @@
         },
         "owner": {
             "edit": {
-                "label": "owner",
+                "label": "Owner",
                 "description": "Owner Name",
                 "placeholder": "",
                 "visible": true,
@@ -163,7 +163,7 @@
         },
         "guid": {
             "edit": {
-                "label": "guid",
+                "label": "Globally Unique Identifier",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -177,7 +177,7 @@
         },
         "generatedAt": {
             "edit": {
-                "label": "generatedAt",
+                "label": "Generated At",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -191,8 +191,8 @@
         },
         "slug": {
             "edit": {
-                "label": "slug",
-                "description": "",
+                "label": "Slug",
+                "description": "Human Readble Unique Identifier",
                 "placeholder": "",
                 "visible": true,
                 "editable": true

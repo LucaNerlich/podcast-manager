@@ -21,8 +21,8 @@
       },
       "title": {
         "edit": {
-            "label": "title",
-          "description": "",
+            "label": "Title",
+            "description": "Description",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -35,7 +35,7 @@
       },
         "audio": {
         "edit": {
-            "label": "audio",
+            "label": "Audio File",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,7 +49,7 @@
       },
       "feeds": {
         "edit": {
-          "label": "feeds",
+            "label": "Feeds",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
         "cover": {
             "edit": {
-                "label": "cover",
+                "label": "Episode Cover Image",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -78,7 +78,7 @@
         },
         "guid": {
             "edit": {
-                "label": "guid",
+                "label": "Globally Unique Identifier",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -92,7 +92,7 @@
         },
         "data": {
             "edit": {
-                "label": "data",
+                "label": "XML Data",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -106,7 +106,7 @@
         },
         "description": {
             "edit": {
-                "label": "description",
+                "label": "Description",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -120,7 +120,7 @@
         },
         "duration": {
             "edit": {
-                "label": "duration",
+                "label": "Duration",
                 "description": "MP3 duration in seconds",
                 "placeholder": "56478",
                 "visible": true,
@@ -134,7 +134,7 @@
         },
         "releasedAt": {
             "edit": {
-                "label": "releasedAt",
+                "label": "Publish Date",
                 "description": "",
                 "placeholder": "",
                 "visible": true,
@@ -148,7 +148,7 @@
         },
         "draft": {
             "edit": {
-                "label": "draft",
+                "label": "Save as Draft",
                 "description": "enable, to remove this episode from the feed",
                 "placeholder": "",
                 "visible": true,
