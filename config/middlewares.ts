@@ -13,8 +13,6 @@ export default [
                         'data:',
                         'market-assets.strapi.io',
                         'strapi.io',
-                        'strapi-cffc-test.s3.eu-central-1.amazonaws.com',
-                        'strapi-cffc.s3.eu-central-1.amazonaws.com',
                         'podcast-manager.s3.eu-central-1.amazonaws.com',
                         'dl.airtable.com'
                     ],
@@ -24,8 +22,6 @@ export default [
                         'data:',
                         'market-assets.strapi.io',
                         'strapi.io',
-                        'strapi-cffc-test.s3.eu-central-1.amazonaws.com',
-                        'strapi-cffc.s3.eu-central-1.amazonaws.com',
                         'podcast-manager.s3.eu-central-1.amazonaws.com',
                         'dl.airtable.com'
                     ],
