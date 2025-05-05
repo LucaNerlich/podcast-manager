@@ -31,7 +31,9 @@ export default factories.createCoreService('api::feed.feed', ({strapi}) => ({
         // private feed, but user token does not have access
         if (!result.allowed_users.some(user => user.token === userToken)) return null;
 
-        return result.data;
+        const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
+        const pattern = new RegExp(`${baseUrl}/api/episodes/(.*?)/download`, 'g');
+        return result.data.replace(pattern, `${baseUrl}/api/episodes/$1/download?token=${userToken}`);
     },
 
     async findPublic() {

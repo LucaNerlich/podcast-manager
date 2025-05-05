@@ -58,11 +58,8 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
             return ctx.notFound();
         }
 
-        // Find all episodes in this feed and modify their enclosure URLs to include the token
-        const feedData = await this.processXmlWithToken(feed, userToken);
-
         ctx.response.type = 'application/xml';
-        return ctx.send(feedData);
+        return ctx.send(feed);
     },
 
     async findBySlugAndUserToken(ctx) {
@@ -73,28 +70,8 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
             return ctx.notFound();
         }
 
-        // Find all episodes in this feed and modify their enclosure URLs to include the token
-        const feedData = await this.processXmlWithToken(feed, userToken);
-
         ctx.response.type = 'application/xml';
-        return ctx.send(feedData);
-    },
-
-    // Helper method to process XML and add token to enclosure URLs
-    async processXmlWithToken(feedData, userToken) {
-        if (!feedData) return null;
-
-        if (userToken === undefined) {
-            console.warn('Private Feed Api called without usertoken.');
-            return feedData;
-        }
-
-        // Replace with URLs that include the token
-        // Simple string replacement to add token to all enclosure URLs
-        // This assumes the enclosure URLs follow our proxy pattern
-        const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
-        const pattern = new RegExp(`${baseUrl}/api/episodes/(.*?)/download`, 'g');
-        return feedData.replace(pattern, `${baseUrl}/api/episodes/$1/download?token=${userToken}`);
+        return ctx.send(feed);
     },
 
     async findPublic(ctx) {
