@@ -9,11 +9,11 @@ function generateFeed(feed) {
         xmlns:content="http://purl.org/rss/1.0/modules/content/">
             <channel>
                 <title>${feed.title}</title>
-                <description>${feed.description}</description>
+                ${feed.description ? `<description>${feed.description}</description>` : ''}
                 <language>de</language>
                 <public>${feed.public}</public>
                 <copyright>${feed.copyright}</copyright>
-                <link>${feed.link}</link>
+                ${feed.link ? `<link>${feed.link}</link>` : ''}
                 <itunes:category text="Leisure"/>
                 <itunes:owner>
                     <itunes:name>${feed.owner}</itunes:name>
