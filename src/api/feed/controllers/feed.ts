@@ -89,6 +89,11 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
         const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
         const pattern = new RegExp(`${baseUrl}/api/episodes/(.*?)/download`, 'g');
 
+        if (userToken === undefined) {
+            console.warn('Private Feed Api called without usertoken.');
+            return feedData;
+        }
+
         // Replace with URLs that include the token
         return feedData.replace(pattern, `${baseUrl}/api/episodes/$1/download?token=${userToken}`);
     },
