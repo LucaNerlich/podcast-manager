@@ -125,29 +125,29 @@ export default {
      * @property {Object} task.context - Contains the Strapi instance.
      * @property {Object} options - Configuration for scheduling the task. Determines the execution timing to only run once after 10 seconds.
      */
-    reGenerateEpisodes: {
-        task: async ({strapi}) => {
-            const episodes = await strapi.documents('api::episode.episode').findMany({
-                populate: ['*', 'cover', 'audio'],
-            });
-
-            for (const episode of episodes) {
-                const generatedEpisodeData = prettify(generateItem(episode), {
-                    indent: 2,
-                    newline: "\n",
-                })
-
-                await strapi.documents('api::episode.episode').update({
-                    documentId: episode.documentId,
-                    data: {
-                        data: generatedEpisodeData
-                    }
-                })
-            }
-        },
-        // only run once after 10 seconds
-        options: new Date(Date.now() + 15000),
-    },
+    // reGenerateEpisodes: {
+    //     task: async ({strapi}) => {
+    //         const episodes = await strapi.documents('api::episode.episode').findMany({
+    //             populate: ['*', 'cover', 'audio'],
+    //         });
+    //
+    //         for (const episode of episodes) {
+    //             const generatedEpisodeData = prettify(generateItem(episode), {
+    //                 indent: 2,
+    //                 newline: "\n",
+    //             })
+    //
+    //             await strapi.documents('api::episode.episode').update({
+    //                 documentId: episode.documentId,
+    //                 data: {
+    //                     data: generatedEpisodeData
+    //                 }
+    //             })
+    //         }
+    //     },
+    //     // only run once after 10 seconds
+    //     options: new Date(Date.now() + 15000),
+    // },
 };
 
 /**
