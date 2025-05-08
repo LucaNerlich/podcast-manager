@@ -10,9 +10,9 @@
         "strapi": "strapi"
     },
     "dependencies": {
-        "@strapi/plugin-users-permissions": "^5.12.7",
-        "@strapi/provider-upload-aws-s3": "^5.12.7",
-        "@strapi/strapi": "^5.12.7",
+        "@strapi/plugin-users-permissions": "^5.13.0",
+        "@strapi/provider-upload-aws-s3": "^5.13.0",
+        "@strapi/strapi": "^5.13.0",
         "music-metadata": "^11.2.1",
         "pg": "~8.13.3",
         "prettify-xml": "^1.2.0",

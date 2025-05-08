@@ -1,6 +1,7 @@
 import prettify from "prettify-xml";
 
 function generateItem(event) {
+    console.log(event)
     const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
 
     // Create proxied audio URL - using the episode guid,
@@ -74,6 +75,9 @@ export default {
         await triggerFeedUpdate(result);
     },
     async beforeUpdate(event) {
+        if (!event.params.data.title) {
+            return;
+        }
         event.params.data.data = prettify(generateItem(event), {
             indent: 2,
             newline: "\n",
@@ -81,6 +85,7 @@ export default {
     },
     async afterUpdate(event) {
         const {result} = event;
+        console.log(result)
         await triggerFeedUpdate(result);
     }
 };
