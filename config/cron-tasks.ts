@@ -45,7 +45,7 @@ function generateFeed(feed) {
                 <itunes:image href="${feed.cover?.url}"/>
                 ${episodes
         .filter((episode) => episode.draft === false || episode.draft === undefined || episode.draft === null)
-        .filter((episode) => new Date(episode.releasedAt).getTime() < new Date().getTime())
+        .filter((episode) => new Date(episode.releasedAt).getTime() <= new Date().getTime())
         .sort((a, b) => new Date(b.releasedAt).getTime() - new Date(a.releasedAt).getTime())
         .map((episode) => episode.data).join('')}
             </channel>
@@ -89,12 +89,34 @@ export default {
                     continue;
                 }
 
-                // Skip unchanged feeds
-                // only works, if episodes do not use the draft/publish system
-                // adding an episode from the episodes side, does not change the updatedAt time
-                if (new Date(feed.generatedAt).getTime() + 2000 > new Date(feed.updatedAt).getTime()) {
-                    console.info("Skipped unmodified feed - " + feed.documentId)
-                    continue
+                const now = new Date().getTime();
+                // If generatedAt is null/undefined (e.g. new feed), treat as very old (0) to ensure first generation.
+                const generatedAtTime = feed.generatedAt ? new Date(feed.generatedAt).getTime() : 0;
+                const updatedAtTime = new Date(feed.updatedAt).getTime();
+
+                // Determine if the feed should be skipped.
+                const timestampsIndicateNoChange = generatedAtTime + 2000 > updatedAtTime;
+
+                let hasNewlyLiveEpisodes = false;
+                if (timestampsIndicateNoChange) {
+                    hasNewlyLiveEpisodes = feed.episodes.some(episode =>
+                        (episode.draft === false || episode.draft === undefined || episode.draft === null) &&
+                        new Date(episode.releasedAt).getTime() <= now && // Episode is live now
+                        new Date(episode.releasedAt).getTime() > generatedAtTime // And it became live *after* the last feed generation
+                    );
+                }
+
+                if (timestampsIndicateNoChange && !hasNewlyLiveEpisodes) {
+                    console.info(`Skipped feed ${feed.documentId}: Timestamps suggest no direct update (generatedAt: ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}, updatedAt: ${new Date(updatedAtTime).toISOString()}) AND no new episodes became live.`);
+                    continue;
+                }
+
+                // Log reason for regeneration
+                if (!timestampsIndicateNoChange) {
+                    console.info(`Regenerating feed ${feed.documentId}: updatedAt (${new Date(updatedAtTime).toISOString()}) is newer than or indicates changes since last generation (generatedAt: ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}).`);
+                }
+                if (hasNewlyLiveEpisodes) { // This implies timestampsIndicateNoChange was true, but newly live episodes trigger regeneration
+                    console.info(`Regenerating feed ${feed.documentId}: New episodes became live since last generation at ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}.`);
                 }
 
                 const generatedFeed = prettify(generateFeed(feed), {
