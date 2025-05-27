@@ -44,10 +44,10 @@ function generateFeed(feed) {
                 <itunes:type>episodic</itunes:type>
                 <itunes:image href="${feed.cover?.url}"/>
                 ${episodes
-        .filter((episode) => episode.draft === false || episode.draft === undefined || episode.draft === null)
-        .filter((episode) => new Date(episode.releasedAt).getTime() <= new Date().getTime())
-        .sort((a, b) => new Date(b.releasedAt).getTime() - new Date(a.releasedAt).getTime())
-        .map((episode) => episode.data).join('')}
+            .filter((episode) => episode.draft === false || episode.draft === undefined || episode.draft === null)
+            .filter((episode) => new Date(episode.releasedAt).getTime() <= new Date().getTime())
+            .sort((a, b) => new Date(b.releasedAt).getTime() - new Date(a.releasedAt).getTime())
+            .map((episode) => episode.data).join('')}
             </channel>
         </rss>
         `;
@@ -72,7 +72,7 @@ export default {
      * Execution schedule:
      * - The task runs every 5 minutes, as specified by the Cron rule `*/
     generateFeeds: {
-        task: async ({strapi}) => {
+        task: async ({ strapi }) => {
             // https://docs.strapi.io/dev-docs/api/document-service#findmany
             // apparently, status propagates 'down'
             // https://github.com/strapi/strapi/issues/12665
@@ -83,55 +83,69 @@ export default {
             });
 
             for (const feed of feeds) {
-                // Skip empty feeds
-                if (!feed.episodes || feed.episodes.length === 0) {
-                    console.info("Skipped empty feed - " + feed.documentId)
-                    continue;
-                }
-
-                const now = new Date().getTime();
-                // If generatedAt is null/undefined (e.g. new feed), treat as very old (0) to ensure first generation.
-                const generatedAtTime = feed.generatedAt ? new Date(feed.generatedAt).getTime() : 0;
-                const updatedAtTime = new Date(feed.updatedAt).getTime();
-
-                // Determine if the feed should be skipped.
-                const timestampsIndicateNoChange = generatedAtTime + 2000 > updatedAtTime;
-
-                let hasNewlyLiveEpisodes = false;
-                if (timestampsIndicateNoChange) {
-                    hasNewlyLiveEpisodes = feed.episodes.some(episode =>
-                        (episode.draft === false || episode.draft === undefined || episode.draft === null) &&
-                        new Date(episode.releasedAt).getTime() <= now && // Episode is live now
-                        new Date(episode.releasedAt).getTime() > generatedAtTime // And it became live *after* the last feed generation
-                    );
-                }
-
-                if (timestampsIndicateNoChange && !hasNewlyLiveEpisodes) {
-                    console.info(`Skipped feed ${feed.documentId}: Timestamps suggest no direct update (generatedAt: ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}, updatedAt: ${new Date(updatedAtTime).toISOString()}) AND no new episodes became live.`);
-                    continue;
-                }
-
-                // Log reason for regeneration
-                if (!timestampsIndicateNoChange) {
-                    console.info(`Regenerating feed ${feed.documentId}: updatedAt (${new Date(updatedAtTime).toISOString()}) is newer than or indicates changes since last generation (generatedAt: ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}).`);
-                }
-                if (hasNewlyLiveEpisodes) { // This implies timestampsIndicateNoChange was true, but newly live episodes trigger regeneration
-                    console.info(`Regenerating feed ${feed.documentId}: New episodes became live since last generation at ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}.`);
-                }
-
-                const generatedFeed = prettify(generateFeed(feed), {
-                    indent: 2,
-                    newline: "\n",
-                })
-
-                await strapi.documents('api::feed.feed').update({
-                    documentId: feed.documentId,
-                    data: {
-                        generatedAt: new Date(),
-                        data: generatedFeed
+                try {
+                    // Skip empty feeds
+                    if (!feed.episodes || feed.episodes.length === 0) {
+                        console.info("Skipped empty feed - " + feed.documentId);
+                        continue;
                     }
-                })
-                console.info("Regenerated feed - " + feed.documentId)
+
+                    // Log future-scheduled episodes
+                    const nowForFutureCheck = new Date().getTime();
+                    const futureEpisodesCount = feed.episodes.filter(episode =>
+                        (episode.draft === false || episode.draft === undefined || episode.draft === null) &&
+                        new Date(episode.releasedAt).getTime() > nowForFutureCheck
+                    ).length;
+
+                    if (futureEpisodesCount > 0) {
+                        console.info(`Feed ${feed.documentId}: Found ${futureEpisodesCount} episode(s) scheduled for future release.`);
+                    }
+
+                    // Determine if the feed should be skipped.
+                    const now = new Date().getTime();
+                    const generatedAtTime = feed.generatedAt ? new Date(feed.generatedAt).getTime() : 0;
+                    const updatedAtTime = new Date(feed.updatedAt).getTime();
+
+                    const timestampsIndicateNoChange = generatedAtTime + 2000 > updatedAtTime;
+
+                    let hasNewlyLiveEpisodes = false;
+                    if (timestampsIndicateNoChange) {
+                        hasNewlyLiveEpisodes = feed.episodes.some(episode =>
+                            (episode.draft === false || episode.draft === undefined || episode.draft === null) &&
+                            new Date(episode.releasedAt).getTime() <= now &&
+                            new Date(episode.releasedAt).getTime() > generatedAtTime
+                        );
+                    }
+
+                    if (timestampsIndicateNoChange && !hasNewlyLiveEpisodes) {
+                        console.info(`Skipped feed ${feed.documentId}: No direct update & no new episodes live. Gen: ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}, Upd: ${new Date(updatedAtTime).toISOString()}`);
+                        continue;
+                    }
+
+                    if (!timestampsIndicateNoChange) {
+                        console.info(`Regenerating feed ${feed.documentId}: Feed entity updated (updatedAt: ${new Date(updatedAtTime).toISOString()}, generatedAt: ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}).`);
+                    }
+                    if (hasNewlyLiveEpisodes) {
+                        console.info(`Regenerating feed ${feed.documentId}: New episodes became live since last generation at ${feed.generatedAt ? new Date(generatedAtTime).toISOString() : 'N/A'}.`);
+                    }
+
+                    const generatedFeed = prettify(generateFeed(feed), {
+                        indent: 2,
+                        newline: "\n",
+                    });
+
+                    await strapi.documents('api::feed.feed').update({
+                        documentId: feed.documentId,
+                        data: {
+                            generatedAt: new Date(),
+                            data: generatedFeed
+                        }
+                    });
+                    console.info("Successfully regenerated feed - " + feed.documentId);
+                } catch (error) {
+                    console.error(`Error processing feed ${feed.documentId} in cron job:`, error);
+                    // Optionally, add more detailed error reporting to a monitoring service here
+                }
             }
         },
         options: {
