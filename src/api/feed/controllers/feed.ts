@@ -44,8 +44,6 @@ export default factories.createCoreController('api::feed.feed', ({strapi}) => ({
 
     async findBySlug(ctx) {
         const {slug} = ctx.params;
-        strapi.log.error(ctx.request.ip);
-        strapi.log.error(ctx.request?.headers['user-agent']);
         const feed = await strapi.service('api::feed.feed').findOne({slug});
         // Find all episodes in this feed and modify their enclosure URLs to include the token
         ctx.response.type = 'application/xml';
