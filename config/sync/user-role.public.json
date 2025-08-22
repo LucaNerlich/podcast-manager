@@ -6,16 +6,16 @@
   "locale": null,
   "permissions": [
     {
-        "documentId": "g3lpvsk9j44rqe5vm6vn8d9m",
-        "action": "api::episode.episode.download",
-        "locale": null
+      "documentId": "g3lpvsk9j44rqe5vm6vn8d9m",
+      "action": "api::episode.episode.download",
+      "locale": null
     },
-      {
-          "documentId": "nmzotsi6s6rra0w83i6y326p",
-          "action": "api::episode.episode.fetch",
-          "locale": null
-      },
-      {
+    {
+      "documentId": "zn4icnr3t3jogoxzh0mmx1by",
+      "action": "api::episode.episode.fetch",
+      "locale": null
+    },
+    {
       "documentId": "cnai48rugsxzfvme6va5iui2",
       "action": "api::feed.feed.findByDocumentId",
       "locale": null

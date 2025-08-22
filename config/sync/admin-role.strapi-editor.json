@@ -6,7 +6,7 @@
   "locale": null,
   "permissions": [
     {
-      "documentId": "hz6bqmug7wmc0x1j9vtz0ite",
+      "documentId": "ek4cl55cas7whurijhj6dkpm",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -21,15 +21,14 @@
           "description",
           "duration",
           "releasedAt",
-          "draft",
-          "link"
+          "draft"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "hoj4iep09rwtkagcbl8b5qqg",
+      "documentId": "bd0epjsvpum8b4j4j66fyjb2",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -44,8 +43,7 @@
           "description",
           "duration",
           "releasedAt",
-          "draft",
-          "link"
+          "draft"
         ]
       },
       "conditions": [
@@ -54,7 +52,7 @@
       "locale": null
     },
     {
-      "documentId": "i5sar3z6cjxexatmcjpz86wt",
+      "documentId": "tokyl79j6ro0sxd7cye4c9yq",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -69,8 +67,7 @@
           "description",
           "duration",
           "releasedAt",
-          "draft",
-          "link"
+          "draft"
         ]
       },
       "conditions": [
@@ -79,7 +76,7 @@
       "locale": null
     },
     {
-      "documentId": "q2i944wholubzemiwb59f41i",
+      "documentId": "hl3q8jgjuxjd6wqbls0ebn2p",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -97,15 +94,14 @@
           "owner",
           "guid",
           "generatedAt",
-          "slug",
-          "link"
+          "slug"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "wo7w6lqzk5flshgk69j1omsf",
+      "documentId": "hcpglg8ana2c14a4845iqy6t",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -123,8 +119,7 @@
           "owner",
           "guid",
           "generatedAt",
-          "slug",
-          "link"
+          "slug"
         ]
       },
       "conditions": [
@@ -134,7 +129,7 @@
       "locale": null
     },
     {
-      "documentId": "dcw07hrsj2qzfvlknx443ghi",
+      "documentId": "ueor2ybsslmzov83owsyh0f9",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::feed.feed",
@@ -152,8 +147,7 @@
           "owner",
           "guid",
           "generatedAt",
-          "slug",
-          "link"
+          "slug"
         ]
       },
       "conditions": [
@@ -163,25 +157,48 @@
       "locale": null
     },
     {
-        "documentId": "hz8badyja4wyx41871yg9d94",
+      "documentId": "nt68iolo4tkl8akk0es8e7v8",
+      "action": "plugin::upload.assets.copy-link",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "gv0hi1ay5fu0mh3mn31aikxs",
       "action": "plugin::upload.assets.create",
       "actionParameters": {},
       "subject": null,
       "properties": {},
-        "conditions": [
-            "admin::is-creator",
-            "admin::has-same-role-as-creator"
-        ],
+      "conditions": [],
       "locale": null
     },
     {
-        "documentId": "tsbpcgpbilziw18uhy6qb1qc",
+      "documentId": "pjftb19jp5qrgam3g0yc4nrd",
+      "action": "plugin::upload.assets.download",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "b9f8lioq1ymkcqyztflgrr1y",
       "action": "plugin::upload.assets.update",
       "actionParameters": {},
       "subject": null,
       "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "bjtjelfwovq4wsvlln9tkyd2",
+      "action": "plugin::upload.configure-view",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
       "conditions": [
-          "admin::is-creator",
         "admin::has-same-role-as-creator"
       ],
       "locale": null

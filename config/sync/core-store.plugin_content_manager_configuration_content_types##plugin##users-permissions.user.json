@@ -167,7 +167,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-            "editable": false
+          "editable": false
         },
         "list": {
           "label": "token",
@@ -232,9 +232,23 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "username",
+        "email",
+        "confirmed"
+      ],
       "edit": [
         [
           {
@@ -276,12 +290,6 @@
             "size": 6
           }
         ]
-      ],
-        "list": [
-            "id",
-            "username",
-            "email",
-            "confirmed"
       ]
     },
     "uid": "plugin::users-permissions.user"

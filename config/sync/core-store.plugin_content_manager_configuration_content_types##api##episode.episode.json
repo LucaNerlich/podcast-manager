@@ -5,51 +5,51 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-        "pageSize": 50,
+      "pageSize": 50,
       "mainField": "title",
-        "defaultSortBy": "id",
-        "defaultSortOrder": "DESC"
+      "defaultSortBy": "id",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
         "edit": {},
         "list": {
-            "label": "Identifier",
+          "label": "Identifier",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-            "label": "Title",
-            "description": "Description",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-            "label": "Title",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-        "audio": {
-        "edit": {
-            "label": "Audio File",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-            "label": "audio",
+          "label": "Title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "audio": {
+        "edit": {
+          "label": "audio",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "audio",
           "searchable": false,
           "sortable": false
         }
       },
       "feeds": {
         "edit": {
-            "label": "Feeds",
+          "label": "feeds",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -57,123 +57,123 @@
           "mainField": "title"
         },
         "list": {
-            "label": "Feeds",
+          "label": "Feeds",
           "searchable": false,
           "sortable": false
         }
       },
-        "cover": {
-            "edit": {
-                "label": "Episode Cover Image",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "Cover Art",
-                "searchable": false,
-                "sortable": false
-            }
+      "cover": {
+        "edit": {
+          "label": "cover",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "guid": {
-            "edit": {
-                "label": "Globally Unique Identifier",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": false
-            },
-            "list": {
-                "label": "guid",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "Cover Art",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "guid": {
+        "edit": {
+          "label": "guid",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": false
         },
-        "data": {
-            "edit": {
-                "label": "XML Data",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": false
-            },
-            "list": {
-                "label": "data",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "guid",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "data": {
+        "edit": {
+          "label": "data",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": false
         },
-        "description": {
-            "edit": {
-                "label": "Description",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "Description",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "data",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "duration": {
-            "edit": {
-                "label": "Duration",
-                "description": "MP3 duration in seconds",
-                "placeholder": "56478",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "duration",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "Description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "duration": {
+        "edit": {
+          "label": "duration",
+          "description": "MP3 duration in seconds",
+          "placeholder": "56478",
+          "visible": true,
+          "editable": true
         },
-        "releasedAt": {
-            "edit": {
-                "label": "Publish Date",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "releasedAt",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "duration",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "releasedAt": {
+        "edit": {
+          "label": "releasedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "draft": {
-            "edit": {
-                "label": "Save as Draft",
-                "description": "enable, to remove this episode from the feed",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "draft",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "releasedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "draft": {
+        "edit": {
+          "label": "draft",
+          "description": "enable, to remove this episode from the feed",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "link": {
-            "edit": {
-                "label": "Website or Blog-Post",
-                "description": "",
-                "placeholder": "https://www.patreon.com/c/stayforever/posts?filters%5Btag%5D=Stainless+Steel+Rat",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "link",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "draft",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "link": {
+        "edit": {
+          "label": "Website or Blog-Post",
+          "description": "",
+          "placeholder": "https://www.patreon.com/c/stayforever/posts?filters%5Btag%5D=Stainless+Steel+Rat",
+          "visible": true,
+          "editable": true
         },
+        "list": {
+          "label": "link",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -231,9 +231,24 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "description",
+        "cover",
+        "feeds"
+      ],
       "edit": [
         [
           {
@@ -241,63 +256,56 @@
             "size": 6
           },
           {
-              "name": "description",
-              "size": 6
+            "name": "description",
+            "size": 6
           }
         ],
-          [
-              {
-                  "name": "audio",
-                  "size": 6
-          },
-              {
-                  "name": "cover",
+        [
+          {
+            "name": "audio",
             "size": 6
-              }
-          ],
-          [
-              {
-                  "name": "releasedAt",
-                  "size": 6
-              },
-              {
-                  "name": "draft",
-                  "size": 6
-              }
-          ],
-          [
+          },
+          {
+            "name": "cover",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "releasedAt",
+            "size": 6
+          },
+          {
+            "name": "draft",
+            "size": 6
+          }
+        ],
+        [
           {
             "name": "feeds",
             "size": 6
           },
-              {
-                  "name": "duration",
-                  "size": 6
+          {
+            "name": "duration",
+            "size": 6
           }
-          ],
-          [
-              {
-                  "name": "guid",
-                  "size": 6
-              },
-              {
-                  "name": "link",
-                  "size": 6
+        ],
+        [
+          {
+            "name": "guid",
+            "size": 6
+          },
+          {
+            "name": "link",
+            "size": 6
           }
-          ],
-          [
-              {
-                  "name": "data",
-                  "size": 12
-              }
+        ],
+        [
+          {
+            "name": "data",
+            "size": 12
+          }
         ]
-      ],
-        "list": [
-            "id",
-            "title",
-            "description",
-            "cover",
-            "feeds"
       ]
     },
     "uid": "api::episode.episode"

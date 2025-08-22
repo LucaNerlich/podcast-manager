@@ -5,37 +5,37 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-        "pageSize": 50,
+      "pageSize": 50,
       "mainField": "title",
-        "defaultSortBy": "id",
-        "defaultSortOrder": "DESC"
+      "defaultSortBy": "id",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
         "edit": {},
         "list": {
-            "label": "Identifier",
+          "label": "Identifier",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-            "label": "Title",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-            "label": "Title",
+          "label": "Title",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-            "label": "Description",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,14 +49,14 @@
       },
       "public": {
         "edit": {
-            "label": "Make Feed Public",
+          "label": "public",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-            "label": "Public",
+          "label": "Public",
           "searchable": true,
           "sortable": true
         }
@@ -78,21 +78,21 @@
       },
       "cover": {
         "edit": {
-            "label": "Feed Cover Image",
+          "label": "cover",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-            "label": "Cover Art",
+          "label": "Cover Art",
           "searchable": false,
           "sortable": false
         }
       },
       "episodes": {
         "edit": {
-            "label": "Episodes",
+          "label": "episodes",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,11 +107,11 @@
       },
       "data": {
         "edit": {
-            "label": "XML Data",
-            "description": "Generated XML file",
+          "label": "data",
+          "description": "Generated XML file",
           "placeholder": "",
           "visible": true,
-            "editable": false
+          "editable": false
         },
         "list": {
           "label": "data",
@@ -119,104 +119,104 @@
           "sortable": true
         }
       },
-        "email": {
-            "edit": {
-                "label": "E-Mail",
-                "description": "Owner E-Mail",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "email",
-                "searchable": true,
-                "sortable": true
-            }
+      "email": {
+        "edit": {
+          "label": "email",
+          "description": "Owner E-Mail",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "copyright": {
-            "edit": {
-                "label": "Copyright",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "copyright",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "copyright": {
+        "edit": {
+          "label": "copyright",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "owner": {
-            "edit": {
-                "label": "Owner",
-                "description": "Owner Name",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "owner",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "copyright",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "owner": {
+        "edit": {
+          "label": "owner",
+          "description": "Owner Name",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "guid": {
-            "edit": {
-                "label": "Globally Unique Identifier",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": false
-            },
-            "list": {
-                "label": "guid",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "owner",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "guid": {
+        "edit": {
+          "label": "guid",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": false
         },
-        "generatedAt": {
-            "edit": {
-                "label": "Generated At",
-                "description": "",
-                "placeholder": "",
-                "visible": true,
-                "editable": false
-            },
-            "list": {
-                "label": "generatedAt",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "guid",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "generatedAt": {
+        "edit": {
+          "label": "generatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": false
         },
-        "slug": {
-            "edit": {
-                "label": "Slug",
-                "description": "Human Readble Unique Identifier",
-                "placeholder": "",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "slug",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "generatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
         },
-        "link": {
-            "edit": {
-                "label": "Website or BlogPost",
-                "description": "",
-                "placeholder": "https://lucanerlich.com",
-                "visible": true,
-                "editable": true
-            },
-            "list": {
-                "label": "link",
-                "searchable": true,
-                "sortable": true
-            }
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "link": {
+        "edit": {
+          "label": "Website or BlogPost",
+          "description": "",
+          "placeholder": "https://lucanerlich.com",
+          "visible": true,
+          "editable": true
         },
+        "list": {
+          "label": "link",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -274,9 +274,23 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "public",
+        "cover"
+      ],
       "edit": [
         [
           {
@@ -290,72 +304,66 @@
         ],
         [
           {
-              "name": "owner",
-              "size": 6
-          },
-            {
-                "name": "email",
+            "name": "owner",
             "size": 6
-            }
-        ],
-          [
-          {
-            "name": "public",
-            "size": 4
           },
-              {
-                  "name": "copyright",
-                  "size": 8
+          {
+            "name": "email",
+            "size": 6
           }
         ],
         [
           {
-              "name": "cover",
-            "size": 6
+            "name": "public",
+            "size": 4
           },
-            {
-                "name": "allowed_users",
-                "size": 6
-          }
-        ],
-          [
           {
-              "name": "link",
-            "size": 6
-          },
-              {
-                  "name": "episodes",
-                  "size": 6
-              }
-          ],
-          [
-              {
-                  "name": "guid",
-            "size": 6
-              },
-              {
-                  "name": "slug",
-                  "size": 6
+            "name": "copyright",
+            "size": 8
           }
         ],
-          [
+        [
+          {
+            "name": "cover",
+            "size": 6
+          },
+          {
+            "name": "allowed_users",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "link",
+            "size": 6
+          },
+          {
+            "name": "episodes",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "guid",
+            "size": 6
+          },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
           {
             "name": "data",
-              "size": 12
+            "size": 12
           }
-          ],
-          [
-              {
-                  "name": "generatedAt",
-                  "size": 6
-              }
-          ]
-      ],
-        "list": [
-            "id",
-            "title",
-            "public",
-            "cover"
+        ],
+        [
+          {
+            "name": "generatedAt",
+            "size": 6
+          }
+        ]
       ]
     },
     "uid": "api::feed.feed"
