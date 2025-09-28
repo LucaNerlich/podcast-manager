@@ -18,7 +18,7 @@ const {env} = require('@strapi/utils')
 export default () => ({
     'users-permissions': {
         config: {
-            jwtManagement: 'refresh', // or env('UP_JWT_MANAGEMENT', 'refresh')
+            jwtManagement: env('UP_JWT_MANAGEMENT', 'refresh'),
             sessions: {
                 accessTokenLifespan: env.int('UP_SESSIONS_ACCESS_TTL', 7 * 24 * 60 * 60),
                 maxRefreshTokenLifespan: env.int('UP_SESSIONS_MAX_REFRESH_TTL', 30 * 24 * 60 * 60),
