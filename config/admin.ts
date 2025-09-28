@@ -11,7 +11,7 @@ export default ({env}) => ({
         cookie: {
             sameSite: 'lax',
             path: '/admin',
-            domain: env('ADMIN_COOKIE_DOMAIN', 'podcasthub.org'),
+            domain: env('BASE_DOMAIN', 'podcasthub.org'),
         },
     },
     watchIgnoreFiles: [
