@@ -1,5 +1,0 @@
-onlyBuiltDependencies:
-  - '@swc/core'
-  - core-js-pure
-  - esbuild
-  - sharp
