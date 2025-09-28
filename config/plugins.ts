@@ -29,7 +29,7 @@ export default () => ({
                     sameSite: env('UP_SESSIONS_COOKIE_SAMESITE', 'lax'),
                     path: env('UP_SESSIONS_COOKIE_PATH', '/'),
                     domain: env('UP_SESSIONS_COOKIE_DOMAIN', 'podcasthub.org'),
-                    secure: env.bool('UP_SESSIONS_COOKIE_SECURE', process.env.NODE_ENV === 'production'),
+                    secure: env.bool('UP_SESSIONS_COOKIE_SECURE', false),
                 },
             },
         },
