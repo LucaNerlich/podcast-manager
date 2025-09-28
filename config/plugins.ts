@@ -16,6 +16,24 @@ function getBoolean(value) {
 const {env} = require('@strapi/utils')
 
 export default () => ({
+    'users-permissions': {
+        config: {
+            jwtManagement: 'refresh', // or env('UP_JWT_MANAGEMENT', 'refresh')
+            sessions: {
+                accessTokenLifespan: env.int('UP_SESSIONS_ACCESS_TTL', 7 * 24 * 60 * 60),
+                maxRefreshTokenLifespan: env.int('UP_SESSIONS_MAX_REFRESH_TTL', 30 * 24 * 60 * 60),
+                idleRefreshTokenLifespan: env.int('UP_SESSIONS_IDLE_REFRESH_TTL', 7 * 24 * 60 * 60),
+                httpOnly: env.bool('UP_SESSIONS_HTTPONLY', false),
+                cookie: {
+                    name: env('UP_SESSIONS_COOKIE_NAME', 'strapi_up_refresh'),
+                    sameSite: env('UP_SESSIONS_COOKIE_SAMESITE', 'lax'),
+                    path: env('UP_SESSIONS_COOKIE_PATH', '/'),
+                    domain: env('UP_SESSIONS_COOKIE_DOMAIN', 'podcasthub.org'),
+                    secure: env.bool('UP_SESSIONS_COOKIE_SECURE', process.env.NODE_ENV === 'production'),
+                },
+            },
+        },
+    },
     upload: {
         enabled: true,
         config: {
