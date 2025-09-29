@@ -45,9 +45,9 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         try {
             // @ts-ignore
             const file = episode.audio;
-            const {provider} = strapi.plugins.upload;
-            const signedUrlData = await provider.getSignedUrl(file);
-            ctx.redirect(signedUrlData.url);
+            // const {provider} = strapi.plugins.upload;
+            // const signedUrlData = await provider.getSignedUrl(file);
+            ctx.redirect(file.url);
         } catch (error) {
             console.error('Error streaming audio file:', error);
             return ctx.internalServerError('Error streaming audio file');
