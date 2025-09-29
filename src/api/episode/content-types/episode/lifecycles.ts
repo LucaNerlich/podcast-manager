@@ -5,7 +5,7 @@ function generateItem(event) {
 
     // Create proxied audio URL - using the episode guid,
     // docid is not available in beforeCreate lifecycle hook
-    const audioUrl = `${baseUrl}/api/episodes/${event.params.data.guid}/download`;
+    const audioUrl = `${baseUrl}/api/episodes/${event.params.data.guid}/download.mp3`;
 
     // For private feeds, URL would need a token query parameter added by the controller
     // This is managed at the controller level when serving the XML feed

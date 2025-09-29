@@ -16,5 +16,13 @@ export default {
                 auth: false, // Allow unauthenticated access, the controller will handle permissions
             },
         },
+        {
+            method: 'GET',
+            path: '/episodes/:guid/download.:extension', // apple podcasts needs a .mp3 file extension for each enlosure
+            handler: 'episode.download',
+            config: {
+                auth: false, // Allow unauthenticated access, the controller will handle permissions
+            },
+        },
     ],
 };
