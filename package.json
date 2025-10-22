@@ -10,9 +10,9 @@
         "strapi": "strapi"
     },
     "dependencies": {
-        "@strapi/plugin-users-permissions": "^5.27.0",
-        "@strapi/provider-upload-aws-s3": "^5.27.0",
-        "@strapi/strapi": "^5.27.0",
+        "@strapi/plugin-users-permissions": "^5.28.0",
+        "@strapi/provider-upload-aws-s3": "^5.28.0",
+        "@strapi/strapi": "^5.28.0",
         "music-metadata": "^11.9.0",
         "pg": "~8.13.3",
         "prettify-xml": "^1.2.0",
@@ -23,7 +23,7 @@
         "styled-components": "~6.1.19"
     },
     "devDependencies": {
-        "@types/node": "^22.18.8",
+        "@types/node": "^22.18.12",
         "@types/react": "^18.3.26",
         "@types/react-dom": "^18.3.7",
         "typescript": "^5.9.3"
@@ -32,5 +32,5 @@
         "node": "22",
         "npm": "11"
     },
-    "packageManager": "pnpm@10.16.1"
+    "packageManager": "pnpm@10.15.1"
 }
