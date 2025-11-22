@@ -10,21 +10,21 @@
         "strapi": "strapi"
     },
     "dependencies": {
-        "@strapi/plugin-users-permissions": "^5.28.0",
-        "@strapi/provider-upload-aws-s3": "^5.28.0",
-        "@strapi/strapi": "^5.28.0",
-        "music-metadata": "^11.9.0",
+        "@strapi/plugin-users-permissions": "^5.31.2",
+        "@strapi/provider-upload-aws-s3": "^5.31.2",
+        "@strapi/strapi": "^5.31.2",
+        "music-metadata": "^11.10.2",
         "pg": "~8.13.3",
         "prettify-xml": "^1.2.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "react-router-dom": "^6.30.1",
+        "react-router-dom": "^6.30.2",
         "strapi-plugin-config-sync": "^3.1.2",
         "styled-components": "~6.1.19"
     },
     "devDependencies": {
-        "@types/node": "^22.18.12",
-        "@types/react": "^18.3.26",
+        "@types/node": "^22.19.1",
+        "@types/react": "^18.3.27",
         "@types/react-dom": "^18.3.7",
         "typescript": "^5.9.3"
     },
