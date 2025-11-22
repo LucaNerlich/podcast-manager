@@ -42,7 +42,7 @@ export default factories.createCoreService('api::episode.episode', ({strapi}) =>
 
         // If no access, return 403
         if (!hasAccess) {
-            return {};
+            return undefined;
         }
 
         return episode;
