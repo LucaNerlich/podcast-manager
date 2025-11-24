@@ -6,7 +6,7 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         const {guid} = ctx.params;
         // set in feed controller -> processXmlWithToken
         const {token} = ctx.query as { token?: string };
-        const normalizedToken = token.replace(/\.mp3$/i, '');
+        const normalizedToken = token?.replace(/\.mp3$/i, '');
 
         if (!guid) {
             return ctx.badRequest('GUID parameter is missing');
@@ -29,14 +29,13 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         const {guid} = ctx.params;
         // set in feed controller -> processXmlWithToken
         const {token} = ctx.query as { token?: string };
-        const normalizedToken = token.replace(/\.mp3$/i, '');
+        const normalizedToken = token?.replace(/\.mp3$/i, '');
 
         if (!guid) {
             return ctx.badRequest('GUID parameter is missing');
         }
 
         const episode = await strapi.service('api::episode.episode').findOne(guid, normalizedToken);
-
         if (!episode) {
             return ctx.notFound();
         }
