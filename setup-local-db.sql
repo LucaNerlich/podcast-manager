@@ -27,4 +27,4 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO podc
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON SEQUENCES TO podcastmanager_user;
 
 -- 6) If superuser is needed (e.g., migrations), uncomment:
-ALTER ROLE podcastmanager_user WITH SUPERUSERSER
+ALTER ROLE podcastmanager_user WITH SUPERUSER
