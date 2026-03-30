@@ -6,7 +6,7 @@
   "locale": null,
   "permissions": [
     {
-      "documentId": "ek4cl55cas7whurijhj6dkpm",
+      "documentId": "su7d19ue11st8uvgo9ahej83",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -21,14 +21,26 @@
           "description",
           "duration",
           "releasedAt",
-          "draft"
+          "draft",
+          "link"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "bd0epjsvpum8b4j4j66fyjb2",
+      "documentId": "rrk8ssjqieyofx2llcf8ez03",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::episode.episode",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "n7i8om3agu84xtxqeyzqeffn",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -43,7 +55,8 @@
           "description",
           "duration",
           "releasedAt",
-          "draft"
+          "draft",
+          "link"
         ]
       },
       "conditions": [
@@ -52,7 +65,7 @@
       "locale": null
     },
     {
-      "documentId": "tokyl79j6ro0sxd7cye4c9yq",
+      "documentId": "l8zfrmxupzti9vx0f8vpb59o",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::episode.episode",
@@ -67,7 +80,8 @@
           "description",
           "duration",
           "releasedAt",
-          "draft"
+          "draft",
+          "link"
         ]
       },
       "conditions": [
