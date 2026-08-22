@@ -35,9 +35,9 @@ export default [
     {
         name: 'strapi::body',
         config: {
-            formLimit: "5gb",
-            jsonLimit: "5gb",
-            textLimit: "5gb",
+            // json/form/text limits stay at koa-body defaults; only the
+            // multipart file size is raised for large audio uploads
+            // (kept in sync with the upload plugin's sizeLimit).
             formidable: {
                 maxFileSize: 5737418240,
             },
