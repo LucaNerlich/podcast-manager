@@ -1,4 +1,16 @@
 module.exports = (plugin) => {
+    const {yup, validateYupSchema} = require('@strapi/utils');
+
+    // Same shape as the stock users-permissions update validation:
+    // only profile fields are user-editable. Everything else (role, confirmed,
+    // blocked, feeds, token) must never be settable through this endpoint.
+    const updateUserBodySchema = yup.object().shape({
+        username: yup.string().min(3),
+        email: yup.string().email().min(6),
+        password: yup.string().min(6),
+    });
+    const validateUpdateUserBody = validateYupSchema(updateUserBodySchema);
+
     const sanitizeOutput = (user) => {
         delete user.blocked;
         delete user.confirmationToken;
@@ -25,13 +37,42 @@ module.exports = (plugin) => {
         }
 
         const {id} = ctx.params;
+        await validateUpdateUserBody(ctx.request.body);
+
+        // Build the update from an explicit allow-list instead of spreading
+        // ctx.request.body, so users cannot mass-assign relations or flags
+        // (e.g. feeds -> grant themselves access to private feeds, role, confirmed).
+        const updateData: Record<string, unknown> = {};
+        if (ctx.request.body.username !== undefined) {
+            updateData.username = ctx.request.body.username;
+        }
+        if (ctx.request.body.email !== undefined) {
+            updateData.email = ctx.request.body.email.toLowerCase();
+        }
+        if (ctx.request.body.password) {
+            updateData.password = ctx.request.body.password;
+        }
+
+        if (updateData.email !== undefined) {
+            const userWithSameEmail = await strapi.query('plugin::users-permissions.user').findOne({
+                where: {email: updateData.email as string},
+            });
+            if (userWithSameEmail && userWithSameEmail.id.toString() !== id.toString()) {
+                return ctx.badRequest('Email already taken');
+            }
+        }
+
+        if (updateData.username !== undefined) {
+            const userWithSameUsername = await strapi.query('plugin::users-permissions.user').findOne({
+                where: {username: updateData.username as string},
+            });
+            if (userWithSameUsername && userWithSameUsername.id.toString() !== id.toString()) {
+                return ctx.badRequest('Username already taken');
+            }
+        }
+
         const response = await strapi.entityService.update('plugin::users-permissions.user', id, {
-            data: {
-                ...ctx.request.body,
-                // prevent overwriting of blocked and token
-                blocked: ctx.state.user.blocked,
-                token: ctx.state.user.token,
-            },
+            data: updateData,
         });
 
         return sanitizeOutput(response);
