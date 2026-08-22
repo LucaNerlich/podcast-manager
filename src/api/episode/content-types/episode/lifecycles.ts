@@ -1,5 +1,19 @@
 import prettify from "prettify-xml";
 
+/**
+ * Escapes XML special characters so user-entered text (titles, descriptions,
+ * URLs, ...) can never break the structure of the generated feed.
+ */
+function escapeXml(unsafe?: string | number | null): string {
+    if (unsafe === undefined || unsafe === null) return '';
+    return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+}
+
 function generateItem(episode) {
     const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
 
@@ -12,16 +26,16 @@ function generateItem(episode) {
 
     return `
         <item>
-            <title>${episode.title.replace('&', ' und ')}</title>
+            <title>${escapeXml(episode.title)}</title>
             <pubDate>${new Date(episode.releasedAt).toUTCString()}</pubDate>
             <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-            <guid isPermaLink="false">${episode.guid}</guid>
-            <itunes:image href="${episode.cover.url}"/>
-            ${episode.description ? `<description>${episode.description.replace('&', ' und ')}</description>` : ''}
+            <guid isPermaLink="false">${escapeXml(episode.guid)}</guid>
+            <itunes:image href="${escapeXml(episode.cover.url)}"/>
+            ${episode.description ? `<description>${escapeXml(episode.description)}</description>` : ''}
             <itunes:explicit>false</itunes:explicit>
-            <itunes:duration>${episode.duration}</itunes:duration>
-            ${episode.link ? `<link>${episode.link}</link>` : ''}
-            <enclosure url="${audioUrl}" length="${Math.round(episode.audio.size * 1024)}" type="audio/mpeg"/>
+            <itunes:duration>${escapeXml(episode.duration)}</itunes:duration>
+            ${episode.link ? `<link>${escapeXml(episode.link)}</link>` : ''}
+            <enclosure url="${escapeXml(audioUrl)}" length="${Math.round(episode.audio.size * 1024)}" type="audio/mpeg"/>
         </item>
         `
 }

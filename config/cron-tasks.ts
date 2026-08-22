@@ -20,6 +20,20 @@ import prettify from "prettify-xml";
  *
  * @return {string} The generated RSS feed as a string in XML format, including metadata and episodes.
  */
+/**
+ * Escapes XML special characters so user-entered text (titles, descriptions,
+ * URLs, ...) can never break the structure of the generated feed.
+ */
+function escapeXml(unsafe?: string | number | null): string {
+    if (unsafe === undefined || unsafe === null) return '';
+    return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+}
+
 function generateFeed(feed) {
     const episodes = feed.episodes;
     return `
@@ -28,21 +42,21 @@ function generateFeed(feed) {
         xmlns:atom="http://www.w3.org/2005/Atom"
         xmlns:content="http://purl.org/rss/1.0/modules/content/">
             <channel>
-                <title>${feed.title}</title>
-                ${feed.description ? `<description>${feed.description}</description>` : ''}
+                <title>${escapeXml(feed.title)}</title>
+                ${feed.description ? `<description>${escapeXml(feed.description)}</description>` : ''}
                 <language>de</language>
                 <public>${feed.public}</public>
-                <copyright>${feed.copyright}</copyright>
-                ${feed.link ? `<link>${feed.link}</link>` : ''}
+                <copyright>${escapeXml(feed.copyright)}</copyright>
+                ${feed.link ? `<link>${escapeXml(feed.link)}</link>` : ''}
                 <itunes:category text="Leisure"/>
                 <itunes:owner>
-                    <itunes:name>${feed.owner}</itunes:name>
-                    <itunes:email>${feed.email}</itunes:email>
+                    <itunes:name>${escapeXml(feed.owner)}</itunes:name>
+                    <itunes:email>${escapeXml(feed.email)}</itunes:email>
                 </itunes:owner>
-                <itunes:author>${feed.owner}</itunes:author>
+                <itunes:author>${escapeXml(feed.owner)}</itunes:author>
                 <itunes:explicit>false</itunes:explicit>
                 <itunes:type>episodic</itunes:type>
-                <itunes:image href="${feed.cover?.url}"/>
+                <itunes:image href="${escapeXml(feed.cover?.url)}"/>
                 ${episodes
             .filter((episode) => episode.draft === false || episode.draft === undefined || episode.draft === null)
             .filter((episode) => new Date(episode.releasedAt).getTime() <= new Date().getTime())

@@ -6,8 +6,8 @@ ENV NODE_ENV=$NODE_ENV
 # Database
 ARG DATABASE_HOST
 ARG DATABASE_PORT=5432
-ARG DATABASE_CLIENT=podcastmanager
-ARG DATABASE_NAME=podcast
+ARG DATABASE_CLIENT=postgres
+ARG DATABASE_NAME=podcastmanager
 ARG DATABASE_USERNAME=podcastmanager_user
 ARG DATABASE_PASSWORD
 ARG DATABASE_SSL=false
@@ -46,18 +46,24 @@ ENV API_TOKEN_SALT=$API_TOKEN_SALT
 ENV ADMIN_JWT_SECRET=$ADMIN_JWT_SECRET
 ENV TRANSFER_TOKEN_SALT=$TRANSFER_TOKEN_SALT
 
-# Set by coolify
-ENV HOST=$HOSTNAME
+# Bind to all interfaces (override at runtime via Coolify env).
+# NOTE: $HOSTNAME is not available to ENV expansion during build and would
+# resolve to an empty string here, which crashes `strapi build`.
+ENV HOST=0.0.0.0
 
 WORKDIR /opt/
-COPY ./package.json ./package-lock.json ./
-RUN npm install --no-cache -g node-gyp
-RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
+# The repo is managed with pnpm (see pnpm-lock.yaml); corepack picks up the
+# pinned version from package.json > packageManager.
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable && pnpm install --frozen-lockfile
 ENV PATH=/opt/node_modules/.bin:$PATH
 
 WORKDIR /opt/app
 COPY . .
 RUN npm run build
+
+# Slim the installed dependencies down to production-only ones for the runtime stage
+RUN cd /opt && pnpm prune --prod
 
 # Creating final production image
 FROM node:22-alpine
@@ -68,8 +74,8 @@ ENV NODE_ENV=$NODE_ENV
 # Database
 ARG DATABASE_HOST
 ARG DATABASE_PORT=5432
-ARG DATABASE_CLIENT=podcastmanager
-ARG DATABASE_NAME=podcast
+ARG DATABASE_CLIENT=postgres
+ARG DATABASE_NAME=podcastmanager
 ARG DATABASE_USERNAME=podcastmanager_user
 ARG DATABASE_PASSWORD
 ARG DATABASE_SSL=false
@@ -108,8 +114,8 @@ ENV API_TOKEN_SALT=$API_TOKEN_SALT
 ENV ADMIN_JWT_SECRET=$ADMIN_JWT_SECRET
 ENV TRANSFER_TOKEN_SALT=$TRANSFER_TOKEN_SALT
 
-# Set by coolify
-ENV HOST=$HOSTNAME
+# Bind to all interfaces (override at runtime via Coolify env).
+ENV HOST=0.0.0.0
 
 WORKDIR /opt/
 COPY --from=build /opt/node_modules ./node_modules
