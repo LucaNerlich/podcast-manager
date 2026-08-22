@@ -1,0 +1,10 @@
+.env
+.env.*
+http-client.private.env.json
+node_modules
+.git
+.github
+.idea
+.cursor
+dist
+strapi.d.ts
