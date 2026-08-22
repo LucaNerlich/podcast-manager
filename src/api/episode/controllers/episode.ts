@@ -13,9 +13,12 @@ export default factories.createCoreController('api::episode.episode', ({strapi})
         }
 
         const episode = await strapi.service('api::episode.episode').findOne(guid, normalizedToken);
+        if (!episode) {
+            return ctx.notFound();
+        }
 
         // Track download with Umami
-        track("episode-fetch", episode?.title, guid)
+        track("episode-fetch", episode.title, guid)
 
         try {
             ctx.response.type = 'application/json';
