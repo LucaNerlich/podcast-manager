@@ -1,27 +1,27 @@
 import prettify from "prettify-xml";
 
-function generateItem(event) {
+function generateItem(episode) {
     const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
 
     // Create proxied audio URL - using the episode guid,
     // docid is not available in beforeCreate lifecycle hook
-    const audioUrl = `${baseUrl}/api/episodes/${event.params.data.guid}/download.mp3`;
+    const audioUrl = `${baseUrl}/api/episodes/${episode.guid}/download.mp3`;
 
     // For private feeds, URL would need a token query parameter added by the controller
     // This is managed at the controller level when serving the XML feed
 
     return `
         <item>
-            <title>${event.params.data.title.replace('&', ' und ')}</title>
-            <pubDate>${new Date(event.params.data.releasedAt).toUTCString()}</pubDate>
+            <title>${episode.title.replace('&', ' und ')}</title>
+            <pubDate>${new Date(episode.releasedAt).toUTCString()}</pubDate>
             <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-            <guid isPermaLink="false">${event.params.data.guid}</guid>
-            <itunes:image href="${event.params.data.cover.url}"/>
-            ${event.params.data.description ? `<description>${event.params.data.description.replace('&', ' und ')}</description>` : ''}
+            <guid isPermaLink="false">${episode.guid}</guid>
+            <itunes:image href="${episode.cover.url}"/>
+            ${episode.description ? `<description>${episode.description.replace('&', ' und ')}</description>` : ''}
             <itunes:explicit>false</itunes:explicit>
-            <itunes:duration>${event.params.data.duration}</itunes:duration>
-            ${event.params.data.link ? `<link>${event.params.data.link}</link>` : ''}
-            <enclosure url="${audioUrl}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
+            <itunes:duration>${episode.duration}</itunes:duration>
+            ${episode.link ? `<link>${episode.link}</link>` : ''}
+            <enclosure url="${audioUrl}" length="${Math.round(episode.audio.size * 1024)}" type="audio/mpeg"/>
         </item>
         `
 }
@@ -64,7 +64,7 @@ export default {
     // every "publish" action creates a new entry
     async beforeCreate(event) {
         event.params.data.guid = event.params.data.guid ?? crypto.randomUUID();
-        event.params.data.data = prettify(generateItem(event), {
+        event.params.data.data = prettify(generateItem(event.params.data), {
             indent: 2,
             newline: "\n",
         });
@@ -73,17 +73,48 @@ export default {
         const {result} = event;
         await triggerFeedUpdate(result);
     },
-    async beforeUpdate(event) {
-        if (!event.params.data.title) {
-            return;
-        }
-        event.params.data.data = prettify(generateItem(event), {
-            indent: 2,
-            newline: "\n",
-        });
-    },
     async afterUpdate(event) {
         const {result} = event;
+
+        // Skip the internal regeneration write below, which only sets 'data'
+        const patchKeys = Object.keys(event.params?.data ?? {});
+        if (patchKeys.length === 1 && patchKeys[0] === 'data') {
+            return;
+        }
+
+        await regenerateItemData(result.documentId);
         await triggerFeedUpdate(result);
     }
 };
+
+/**
+ * Regenerates the stored RSS item XML of an episode from the fully populated
+ * document as it exists in the database. Update payloads may be partial
+ * patches (e.g. only the title), so generating from `event.params.data`
+ * would write literal `undefined`/NaN values for fields that were not part
+ * of the update.
+ *
+ * @param {string} documentId The documentId of the episode to regenerate.
+ */
+async function regenerateItemData(documentId) {
+    const episode = await strapi.documents('api::episode.episode').findOne({
+        documentId,
+        populate: ['cover', 'audio'],
+    });
+
+    if (!episode) return;
+
+    const generated = prettify(generateItem(episode), {
+        indent: 2,
+        newline: "\n",
+    });
+
+    if (generated === episode.data) return;
+
+    await strapi.documents('api::episode.episode').update({
+        documentId,
+        data: {
+            data: generated,
+        }
+    });
+}
