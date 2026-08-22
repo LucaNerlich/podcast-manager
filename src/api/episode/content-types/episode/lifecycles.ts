@@ -1,5 +1,19 @@
 import prettify from "prettify-xml";
 
+/**
+ * Escapes XML special characters so user-entered text (titles, descriptions,
+ * URLs, ...) can never break the structure of the generated feed.
+ */
+function escapeXml(unsafe?: string | number | null): string {
+    if (unsafe === undefined || unsafe === null) return '';
+    return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+}
+
 function generateItem(event) {
     const baseUrl = process.env.BASE_URL || 'https://podcasthub.org';
 
@@ -12,16 +26,16 @@ function generateItem(event) {
 
     return `
         <item>
-            <title>${event.params.data.title.replace('&', ' und ')}</title>
+            <title>${escapeXml(event.params.data.title)}</title>
             <pubDate>${new Date(event.params.data.releasedAt).toUTCString()}</pubDate>
             <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-            <guid isPermaLink="false">${event.params.data.guid}</guid>
-            <itunes:image href="${event.params.data.cover.url}"/>
-            ${event.params.data.description ? `<description>${event.params.data.description.replace('&', ' und ')}</description>` : ''}
+            <guid isPermaLink="false">${escapeXml(event.params.data.guid)}</guid>
+            <itunes:image href="${escapeXml(event.params.data.cover.url)}"/>
+            ${event.params.data.description ? `<description>${escapeXml(event.params.data.description)}</description>` : ''}
             <itunes:explicit>false</itunes:explicit>
-            <itunes:duration>${event.params.data.duration}</itunes:duration>
-            ${event.params.data.link ? `<link>${event.params.data.link}</link>` : ''}
-            <enclosure url="${audioUrl}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
+            <itunes:duration>${escapeXml(event.params.data.duration)}</itunes:duration>
+            ${event.params.data.link ? `<link>${escapeXml(event.params.data.link)}</link>` : ''}
+            <enclosure url="${escapeXml(audioUrl)}" length="${Math.round(event.params.data.audio.size * 1024)}" type="audio/mpeg"/>
         </item>
         `
 }
