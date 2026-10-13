@@ -1,5 +1,9 @@
 # Podcast Feed Manager
 
+> Archived: Check the follow-up project at https://directwerk.org/en
+
+---
+
 A headless CMS solution built with Strapi for managing RSS podcast feeds, including episodes, MP3 files, covers, and
 private access controls.
 
